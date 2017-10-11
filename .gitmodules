@@ -1,3 +1,10 @@
 [submodule "themes/ananke"]
 	path = themes/ananke
 	url = https://github.com/budparr/gohugo-theme-ananke.git
+[submodule "themes/hugo_theme_pickles"]
+	path = themes/hugo_theme_pickles
+	url = https://github.com/mismith0227/hugo_theme_pickles
+	branch = release
+[submodule "themes/theme-hugo-foundation6"]
+	path = themes/theme-hugo-foundation6
+	url = https://github.com/htkoca/theme-hugo-foundation6
