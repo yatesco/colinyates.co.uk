@@ -3,13 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://colinyates.co.uk/blog/abc/</loc>
-    <lastmod>2017-10-11T17:53:48+01:00</lastmod>
+    <loc>https://colinyates.co.uk/blog/a-new-experiment/</loc>
+    <lastmod>2017-10-11T18:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://colinyates.co.uk/blog/</loc>
-    <lastmod>2017-10-11T17:53:48+01:00</lastmod>
+    <lastmod>2017-10-11T18:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -20,25 +20,12 @@
   
   <url>
     <loc>https://colinyates.co.uk/</loc>
-    <lastmod>2017-10-11T17:53:48+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://colinyates.co.uk/tags/taga/</loc>
-    <lastmod>2017-10-11T17:53:48+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://colinyates.co.uk/tags/tagb/</loc>
-    <lastmod>2017-10-11T17:53:48+01:00</lastmod>
+    <lastmod>2017-10-11T18:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://colinyates.co.uk/tags/</loc>
-    <lastmod>2017-10-11T17:53:48+01:00</lastmod>
     <priority>0</priority>
   </url>
   

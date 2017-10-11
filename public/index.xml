@@ -6,18 +6,21 @@
     <description>Recent content on Colin Yates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
-    <lastBuildDate>Wed, 11 Oct 2017 17:53:48 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 11 Oct 2017 18:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://colinyates.co.uk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Abc</title>
-      <link>https://colinyates.co.uk/blog/abc/</link>
-      <pubDate>Wed, 11 Oct 2017 17:53:48 +0100</pubDate>
+      <title>A new experiment</title>
+      <link>https://colinyates.co.uk/blog/a-new-experiment/</link>
+      <pubDate>Wed, 11 Oct 2017 18:00:00 +0100</pubDate>
       
-      <guid>https://colinyates.co.uk/blog/abc/</guid>
-      <description>Well, isn&amp;rsquo;t this something special Right?!</description>
+      <guid>https://colinyates.co.uk/blog/a-new-experiment/</guid>
+      <description>So I am trying a new experiment&amp;hellip;
+Thanks to HUGO and `ox-hugo` there is now a feasibly blogging platform that doesn&amp;rsquo;t take me out of emacs.
+I am very bad at blogging. This at least removes a number of barriers (markdown, non-emacs-editor etc.).
+So, welcome, and let&amp;rsquo;s see where this takes us!</description>
     </item>
     
   </channel>
