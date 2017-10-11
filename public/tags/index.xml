@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Colin Yates</title>
+    <link>https://colinyates.co.uk/tags/</link>
+    <description>Recent content in Tags on Colin Yates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Wed, 11 Oct 2017 17:53:48 +0100</lastBuildDate>
+    
+	<atom:link href="https://colinyates.co.uk/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Taga</title>
+      <link>https://colinyates.co.uk/tags/taga/</link>
+      <pubDate>Wed, 11 Oct 2017 17:53:48 +0100</pubDate>
+      
+      <guid>https://colinyates.co.uk/tags/taga/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tagb</title>
+      <link>https://colinyates.co.uk/tags/tagb/</link>
+      <pubDate>Wed, 11 Oct 2017 17:53:48 +0100</pubDate>
+      
+      <guid>https://colinyates.co.uk/tags/tagb/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
