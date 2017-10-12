@@ -25,3 +25,10 @@ Hmm, does this work?
    (~markdown~, ~non-emacs-editor~ etc.).
 
    So, welcome, and let's see where this takes us!
+** A new experiment (part 2)
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: an-experiment-in-blogging-part-2
+   :EXPORT_DATE: 2017-10-12T11:50:00
+   :END:
+   Messing around trying to get ~hugo~ deployed without `public`.
+   
