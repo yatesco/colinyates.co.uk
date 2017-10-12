@@ -6,10 +6,19 @@
     <description>Recent content in Blog on Colin Yates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
-    <lastBuildDate>Wed, 11 Oct 2017 18:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Oct 2017 10:07:00 +0100</lastBuildDate>
     
 	<atom:link href="https://colinyates.co.uk/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Committing without public</title>
+      <link>https://colinyates.co.uk/blog/committing-without-public/</link>
+      <pubDate>Thu, 12 Oct 2017 10:07:00 +0100</pubDate>
+      
+      <guid>https://colinyates.co.uk/blog/committing-without-public/</guid>
+      <description>Hmm, does this work?</description>
+    </item>
     
     <item>
       <title>A new experiment</title>
