@@ -4,6 +4,12 @@
 #+PROPERTY: header-args :eval no
 
 * Blog Ideas
+** TODO Committing without public
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: committing-without-public
+   :EXPORT_DATE: [2017-10-12 Thu 10:07]
+   :END:
+Hmm, does this work? 
 * Posts
 ** A new experiment
    :PROPERTIES:
