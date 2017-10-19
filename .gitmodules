@@ -1,9 +1,3 @@
-[submodule "themes/cocoa"]
-	path = themes/cocoa
-	url = https://github.com/nishanths/cocoa-hugo-theme.git
-[submodule "themes/minimo"]
-	path = themes/minimo
-	url = https://github.com/MunifTanjim/minimo
 [submodule "themes/cy-minimo"]
 	path = themes/cy-minimo
-	url = https://github.com/yatesco/minimo
+	url = git@github.com:yatesco/minimo.git
