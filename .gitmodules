@@ -4,3 +4,6 @@
 [submodule "themes/minimo"]
 	path = themes/minimo
 	url = https://github.com/MunifTanjim/minimo
+[submodule "themes/cy-minimo"]
+	path = themes/cy-minimo
+	url = https://github.com/yatesco/minimo

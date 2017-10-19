@@ -3,7 +3,7 @@ title = "Random thoughts"
 # for smart copyright line, leave this blank and check [params.copyright]
 copyright = ""
 
-theme = "minimo"
+theme = "cy-minimo"
 
 disqusShortname = "colinyates123"
 googleAnalytics = ""
