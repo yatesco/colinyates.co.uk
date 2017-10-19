@@ -1,69 +1,83 @@
-baseurl             = "https://colinyates.co.uk"
-builddrafts         = false
-canonifyurls        = true
-contentdir          = "content"
-languageCode        = "en-GB"
-layoutdir           = "layouts"
-publishdir          = "public"
-theme               = "cocoa"
-author              = "Colin Yates"
-title               = "Colin Yates"
-pygmentsuseclasses  = true
-disqusshortname     = "cocoaexamplesite" # Comment out to disable Disqus.
-pluralizelisttitles = false
-googleAnalytics     = "UA-123-45"
+baseURL = "https://colinyates.co.uk"
+title = "Random thoughts"
+# for smart copyright line, leave this blank and check [params.copyright]
+copyright = ""
+
+theme = "minimo"
+
+disqusShortname = "colinyates123"
+googleAnalytics = ""
+
+Paginate = 5
+preserveTaxonomyNames = true
+
+enableRobotsTXT = true # generate robots.txt
+
+# Syntax Highlighting ( https://gohugo.io/content-management/syntax-highlighting/ )
+pygmentsCodefences = true
+
+# Missing translations will default to this content language
+defaultContentLanguage = "en"
+
+[params.info]
+description = "Random thoughts from a random person"
+title404 = "Nothing's here!"
+
+[params.assets]
+favicon = "favicon.ico"
+customCSS = ["css/custom.css"]
+customJS = ["js/custom.js"]
+gopher = "" # used in 404 template ( Generator: https://gopherize.me )
+
+[params.copyright]
+prefix = ""
+holder = "Colin Yates"
+startYear = "2017"
+suffix = ""
+
+[params.settings]
+# date & time format: https://golang.org/pkg/time/
+dateFormat = "2006, Jan 02"
+listDateFormat = "2006, Jan 02"
+hideEntryNavigation = ["page"] # boolean / array of sections
+hideSocialMenu = false
+showReadingTime = true
+
+[params.opengraph.twitter]
+page = "yatesco" # Twitter page username
+
+[params.seo]
+# Title Separator: - – — · • * ⋆ | ~ « » < >
+titleSeparator = "•"
+
+[params.social]
+email = "colin@colinyates.co.uk"
+github = "yatesco"
+linkedin = "yatescolin"
+twitter = "yatesco"
+
+[params.social.config]
+platforms = ["github","twitter","email","linkedin"]
+
+[taxonomies]
+category = "categories"
+tag = "tags"
 
 [permalinks]
-blog  = "blog/:slug/"
+page = "/:slug/"
 
 [[menu.main]]
-name                   = "Blog"
-weight                 = -120
-identifier             = "blog"
-url                    = "/blog/"
+name = "Blog"
+weight = -10
+identifier = "blog"
+url = "/"
 
-# [[menu.main]]
-# name                   = "About"
-# weight                 = -110
-# identifier             = "about"
-# url                    = "/about/"
+[blackfriday]
+hrefTargetBlank = true
 
-# [[menu.main]]
-# name                   = "Code"
-# weight                 = -100
-# identifier             = "code"
-# url                    = "/code/"
-
-[params]
-latestpostscount       = 5                             # how many posts to display on the home page
-i18n_flags             = false                         # whether to display small country flags for available translations
-author                 = "Colin Yates"
-cachebuster            = true                          # add the current unix timestamp in query string for cache busting css assets
-dateform               = "Jan 2, 2006"
-dateformfull           = "Mon Jan 2 2006 15:04:05 MST"
-description            = "Don't panic"
-email                  = "colin@colinyates.co.uk"
-extracssfiles          = [ "/css/override.css" ]       # In your `static` directory, add/remove files as necessary.
-faviconfile            = "img/leaf.ico"
-github                 = "//github.com/yatesco"
-highlightjs            = true
-instagram              = ""
-lang                   = "en"
-linkedin               = "//linkedin.com/in/yatescolin"
-noshowreadtime         = false                         # if true, don't show "<x> minutes read" in posts
-selfintro              = ""                            # appears in the site header when set to a non-empty string
-twitter                = "//twitter.com/yatesco"
-mastodon               = ""
-# highlightjslanguages = ["go"]                        # additional languages not included in the "common" set
-# highlightjsStyle     = "darcula"
-
-piwik				   = false                         # If true, Piwik integration is enabled
-# piwik_url            = "//www.example.com/piwik/"    # URL to your Piwik installation. Must End with a slash
-# piwik_id			   = 2                             # Id of your site in Piwik
-
-avatar                 = "img/profile.jpg" # path to image in static dir e.g img/avatar.png (do not use in the same time as gravatar)
-# gravatar             = ""                # do not use in the same time as avatar
-
-# The following are DEPRECATED.
-gatracker              = "XYZ" # use googleAnalytics instead
-initials = "ad" # displayed on single post page; deprecated in v0.3.0.
+[languages]
+# edit this block for your own language
+[languages.en]
+lang = "en"
+languageName = "English"
+weight = 1

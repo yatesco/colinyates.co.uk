@@ -3,17 +3,12 @@
 #+SEQ_TODO: TODO DRAFT DONE
 #+PROPERTY: header-args :eval no
 * Blog Ideas
-** TODO Committing without public
-:PROPERTIES:
-:EXPORT_FILE_NAME: committing-without-public
-:EXPORT_DATE: [2017-10-12 Thu 10:07]
-:END:
-Hmm, does this work? 
-** DONE Modules within Emacs                                      :emacs:tip:
-:PROPERTIES:
-:EXPORT_FILE_NAME: modules-within-emacs
-:EXPORT_DATE: [2017-10-15 Sun 16:25]
-:END:
+* Posts
+** Modules within Emacs                                           :emacs:tip:
+   :PROPERTIES:
+   :EXPORT_FILE_NAME: modules-within-emacs
+   :EXPORT_DATE: [2017-10-15 Sun 16:25]
+   :END:
 *** The pitch 
     Do you maintain your own =.emacs.d= and worry that it is a single pile of complected and unmaintainable logic? Fancy a bit of spacemacs' layers? 
 
@@ -102,7 +97,6 @@ If you want to see this in action, feel free to checkout[[https://github.com/yat
 
 Peace.
 
-* Posts
 ** A new experiment
    :PROPERTIES:
    :EXPORT_FILE_NAME: an-experiment-in-blogging
@@ -117,14 +111,6 @@ Peace.
    (~markdown~, ~non-emacs-editor~ etc.).
 
    So, welcome, and let's see where this takes us!
-** A new experiment (part 2)
-   :PROPERTIES:
-   :EXPORT_FILE_NAME: an-experiment-in-blogging-part-2
-   :EXPORT_DATE: 2017-10-12T11:50:00
-   :END:
-   Messing around trying to get ~hugo~ deployed without `public`.
-   
-
 * Footnotes
 * COMMENT Local Variables                                           :ARCHIVE:
 # Local Variables:
