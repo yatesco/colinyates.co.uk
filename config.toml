@@ -72,6 +72,12 @@ weight = -10
 identifier = "blog"
 url = "/"
 
+[[menu.main]]
+name = "Tags"
+weight = 10
+identifier = "tags"
+url = "/tags"
+
 [blackfriday]
 hrefTargetBlank = true
 
