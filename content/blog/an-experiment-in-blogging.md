@@ -6,7 +6,7 @@ draft = false
 
 So I am trying a new experiment...
 
-Thanks to [HUGO](https://gohugo.io/) and [\`ox-hugo\`](https://ox-hugo.scripter.co/) there is now a feasibly blogging platform
+Thanks to [HUGO](https://gohugo.io/) and [ox-hugo](https://ox-hugo.scripter.co/) there is now a feasibly blogging platform
 that doesn't take me out of emacs.
 
 I am <span class="underline">very</span> bad at blogging. This at least removes a number of barriers

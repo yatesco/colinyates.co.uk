@@ -13,7 +13,7 @@ Life seems to be doing all it can to stop me blogging, so this is 'fly by' blog 
 
 ## [seafile](<https://www.seafile.com>) {#seafile--https-www-dot-seafile-dot-com}
 
-Wow, this is rocking my world big time - it is great. Disappointed there isn't a 'one-way sync TO the server' as that would replace my use of \`rsync\`.
+Wow, this is rocking my world big time - it is great. Disappointed there isn't a 'one-way sync TO the server' as that would replace my use of `rsync`.
 
 
 ## [plex](<https://www.plex.tv>) {#plex--https-www-dot-plex-dot-tv}

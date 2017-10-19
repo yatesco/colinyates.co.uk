@@ -75,7 +75,7 @@ The code in its entirety (be *WARNED*, this is my first entry into Emacs' lisp):
     (add-to-list 'load-path "~/.emacs.d/elisp")
     #+END_SRC
 
-    Secondly, `require` the modules:
+    Secondly, =require= the modules:
 
     #+BEGIN_SRC emacs-lisp
     (require 'cy-my-module)
@@ -83,12 +83,12 @@ The code in its entirety (be *WARNED*, this is my first entry into Emacs' lisp):
 
     And that's really all there is to it!
 
-*** A little more awesome source with `yas-snippet`
+*** A little more awesome source with =yas-snippet=
      You will notice that =cy/create-module= invokes 
      #+BEGIN_SRC emacs-lisp
      (yas-expand-snippet (yas-lookup-snippet "header" nil 'lisp-mode))
 #+END_SRC
-     That invokes and starts the expansion process for the `header` snippet defined for the `lisp` modes. If you aren't already using =yas-snippets= then _please_, stop right now and check it out [[https://github.com/joaotavora/yasnippet][here.]]
+     That invokes and starts the expansion process for the =header= snippet defined for the =lisp= modes. If you aren't already using =yas-snippets= then _please_, stop right now and check it out [[https://github.com/joaotavora/yasnippet][here.]]
 
 *** Summary
     Building your own module plumbing in Emacs is trivial.
@@ -104,7 +104,7 @@ Peace.
    :END:
    So I am trying a new experiment...
 
-   Thanks to [[https://gohugo.io/][HUGO]] and [[https://ox-hugo.scripter.co/][`ox-hugo`]] there is now a feasibly blogging platform
+   Thanks to [[https://gohugo.io/][HUGO]] and [[https://ox-hugo.scripter.co/][ox-hugo]] there is now a feasibly blogging platform
    that doesn't take me out of emacs.
 
    I am _very_ bad at blogging. This at least removes a number of barriers
@@ -566,7 +566,7 @@ I mistakenly thought this meant that it would run separate _builds_ in parallel,
 
 *** Awesome sauce - speed me up!
 
-It is as simple as adding it to your `compiler` options in your `cljsbuild` config:
+It is as simple as adding it to your =compiler= options in your =cljsbuild= config:
 
 #+BEGIN_SRC clojure
 :cljsbuild {:test-commands
@@ -604,7 +604,7 @@ It is as simple as adding it to your `compiler` options in your `cljsbuild` conf
 				     }}}}
 #+END_SRC 
 				    
->I only added it to the `:dev` build but I guess you could add it to each build if you wanted to_
+>I only added it to the =:dev= build but I guess you could add it to each build if you wanted to_
 
 Anecdotally (meaning I can't be bothered to time it properly) it sped up my build by about 300% - yep, that much. Restarting the REPL in the lovely CIDER is no longer an excuse to go and grab some coffee.
 
@@ -727,7 +727,7 @@ In summary, an abstraction is not a programming construct, it is a thinking and 
 Life seems to be doing all it can to stop me blogging, so this is 'fly by' blog post to keep me in rhythm.
 
 *** [seafile](https://www.seafile.com)
-Wow, this is rocking my world big time - it is great. Disappointed there isn't a 'one-way sync TO the server' as that would replace my use of `rsync`.
+Wow, this is rocking my world big time - it is great. Disappointed there isn't a 'one-way sync TO the server' as that would replace my use of =rsync=.
 
 *** [plex](https://www.plex.tv)
 Where have you been all my life? Closely following seafile in 'things that make me smile', Plex is awesome for managing your media. Sort of :-) - CDs are a dream, rip them, and the magic of internet-accessible-tag-libraries will pull down cover art, organise them etc.

@@ -80,7 +80,7 @@ To actually use these modules, add the module root (`~/.emacs.d/elisp`) to the E
 (add-to-list 'load-path "~/.emacs.d/elisp")
 ```
 
-Secondly, \`require\` the modules:
+Secondly, `require` the modules:
 
 ```emacs-lisp
 (require 'cy-my-module)
@@ -89,7 +89,7 @@ Secondly, \`require\` the modules:
 And that's really all there is to it!
 
 
-## A little more awesome source with \`yas-snippet\` {#a-little-more-awesome-source-with-yas-snippet}
+## A little more awesome source with `yas-snippet` {#a-little-more-awesome-source-with-yas-snippet}
 
 You will notice that `cy/create-module` invokes
 
@@ -97,7 +97,7 @@ You will notice that `cy/create-module` invokes
 (yas-expand-snippet (yas-lookup-snippet "header" nil 'lisp-mode))
 ```
 
-That invokes and starts the expansion process for the \`header\` snippet defined for the \`lisp\` modes. If you aren't already using `yas-snippets` then <span class="underline">please</span>, stop right now and check it out [here.](https://github.com/joaotavora/yasnippet)
+That invokes and starts the expansion process for the `header` snippet defined for the `lisp` modes. If you aren't already using `yas-snippets` then <span class="underline">please</span>, stop right now and check it out [here.](https://github.com/joaotavora/yasnippet)
 
 
 ## Summary {#summary}

@@ -16,7 +16,7 @@ I mistakenly thought this meant that it would run separate <span class="underlin
 
 ## Awesome sauce - speed me up! {#awesome-sauce-speed-me-up}
 
-It is as simple as adding it to your \`compiler\` options in your \`cljsbuild\` config:
+It is as simple as adding it to your `compiler` options in your `cljsbuild` config:
 
 ```clojure
 :cljsbuild {:test-commands
@@ -54,7 +54,7 @@ It is as simple as adding it to your \`compiler\` options in your \`cljsbuild\` 
 				     }}}}
 ```
 
->I only added it to the \`:dev\` build but I guess you could add it to each build if you wanted to\_
+>I only added it to the `:dev` build but I guess you could add it to each build if you wanted to\_
 
 Anecdotally (meaning I can't be bothered to time it properly) it sped up my build by about 300% - yep, that much. Restarting the REPL in the lovely CIDER is no longer an excuse to go and grab some coffee.
 
