@@ -20,7 +20,7 @@ Modules, modules and more modules for the win.
 *** The code
 The code in its entirety (be *WARNED*, this is my first entry into Emacs' lisp):
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC lisp
   (defun cy/expand-to-module-file (module-name)
     (expand-file-name (concat "cy-" module-name ".el") "~/.emacs.d/elisp"))
 
@@ -71,13 +71,13 @@ The code in its entirety (be *WARNED*, this is my first entry into Emacs' lisp):
 
 *** Using modules
       To actually use these modules, add the module root (=~/.emacs.d/elisp=) to the Emacs' =load-path= in your =init.el=:
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC lisp
     (add-to-list 'load-path "~/.emacs.d/elisp")
     #+END_SRC
 
     Secondly, =require= the modules:
 
-    #+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC lisp
     (require 'cy-my-module)
     #+END_SRC
 
@@ -85,7 +85,7 @@ The code in its entirety (be *WARNED*, this is my first entry into Emacs' lisp):
 
 *** A little more awesome source with =yas-snippet=
      You will notice that =cy/create-module= invokes 
-     #+BEGIN_SRC emacs-lisp
+     #+BEGIN_SRC lisp
      (yas-expand-snippet (yas-lookup-snippet "header" nil 'lisp-mode))
 #+END_SRC
      That invokes and starts the expansion process for the =header= snippet defined for the =lisp= modes. If you aren't already using =yas-snippets= then _please_, stop right now and check it out [[https://github.com/joaotavora/yasnippet][here.]]

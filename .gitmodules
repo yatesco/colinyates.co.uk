@@ -1,3 +1,6 @@
 [submodule "themes/cy-minimo"]
 	path = themes/cy-minimo
 	url = git@github.com:yatesco/minimo.git
+[submodule "themes/hemingway2"]
+	path = themes/hemingway2
+	url = https://gitlab.com/beli3ver/hemingway2

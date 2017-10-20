@@ -1,89 +1,39 @@
-baseURL = "https://colinyates.co.uk"
+baseurl = "https://colinyates.co.uk"
+languageCode = "en"
 title = "Random thoughts"
-# for smart copyright line, leave this blank and check [params.copyright]
-copyright = ""
-
-theme = "cy-minimo"
-
+theme = "hemingway2"
+copyright = "&copy; <a href=\"https://github.com/beli3ver\">Malte Kiefer</a> 2016"
 disqusShortname = "colinyates123"
 googleAnalytics = ""
-
-Paginate = 5
-preserveTaxonomyNames = true
-
-enableRobotsTXT = true # generate robots.txt
-
-# Syntax Highlighting ( https://gohugo.io/content-management/syntax-highlighting/ )
-pygmentsCodefences = true
-
-# Missing translations will default to this content language
-defaultContentLanguage = "en"
-
-[params.info]
-description = "Random thoughts from a random person"
-title404 = "Nothing's here!"
-
-[params.assets]
-favicon = "favicon.ico"
-customCSS = ["css/custom.css"]
-customJS = ["js/custom.js"]
-gopher = "" # used in 404 template ( Generator: https://gopherize.me )
-
-[params.copyright]
-prefix = ""
-holder = "Colin Yates"
-startYear = "2017"
-suffix = ""
-
-[params.settings]
-# date & time format: https://golang.org/pkg/time/
-dateFormat = "2006, Jan 02"
-listDateFormat = "2006, Jan 02"
-hideEntryNavigation = ["page"] # boolean / array of sections
-hideSocialMenu = false
-showReadingTime = true
-
-[params.opengraph.twitter]
-page = "yatesco" # Twitter page username
-
-[params.seo]
-# Title Separator: - – — · • * ⋆ | ~ « » < >
-titleSeparator = "•"
-
-[params.social]
-email = "colin@colinyates.co.uk"
-github = "yatesco"
-linkedin = "yatescolin"
-twitter = "yatesco"
-
-[params.social.config]
-platforms = ["github","twitter","email","linkedin"]
+description = "Christian, father, husband and Software Engineer."
+keywords = ["keyword1", "keyword2"]
 
 [taxonomies]
-category = "categories"
 tag = "tags"
+category = "categories"
 
-[permalinks]
-page = "/:slug/"
+[params]
 
-[[menu.main]]
-name = "Blog"
-weight = -10
-identifier = "blog"
-url = "/"
+[params.highlight]
+style = "github"
+languages = ["go", "dockerfile", "lisp", "clojure"]
 
-[[menu.main]]
-name = "Tags"
-weight = 10
-identifier = "tags"
+[[params.social]]
 url = "/tags"
+fa_icon = "fa-tags"
 
-[blackfriday]
-hrefTargetBlank = true
+[[params.social]]
+url = "https://github.com/yatesco"
+fa_icon = "fa-github"
 
-[languages]
-# edit this block for your own language
-[languages.en]
-lang = "en"
-languageName = "English"
-weight = 1
+[[params.social]]
+url = "https://twitter.com/yatesco"
+fa_icon = "fa-twitter"
+
+[[params.social]]
+url = "https://linkedin.com/in/yatescolin"
+fa_icon = "fa-linkedin"
+
+[[params.social]]
+url = "/index.xml"
+fa_icon = "fa-rss"

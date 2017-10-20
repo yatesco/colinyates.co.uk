@@ -21,7 +21,7 @@ This approach requires a trivially small amount of elisp and a single plugin ([i
 
 The code in its entirety (be **WARNED**, this is my first entry into Emacs' lisp):
 
-```emacs-lisp
+```lisp
 (defun cy/expand-to-module-file (module-name)
   (expand-file-name (concat "cy-" module-name ".el") "~/.emacs.d/elisp"))
 
@@ -76,13 +76,13 @@ The most interesting parts are:
 
 To actually use these modules, add the module root (`~/.emacs.d/elisp`) to the Emacs' `load-path` in your `init.el`:
 
-```emacs-lisp
+```lisp
 (add-to-list 'load-path "~/.emacs.d/elisp")
 ```
 
 Secondly, `require` the modules:
 
-```emacs-lisp
+```lisp
 (require 'cy-my-module)
 ```
 
@@ -93,7 +93,7 @@ And that's really all there is to it!
 
 You will notice that `cy/create-module` invokes
 
-```emacs-lisp
+```lisp
 (yas-expand-snippet (yas-lookup-snippet "header" nil 'lisp-mode))
 ```
 
