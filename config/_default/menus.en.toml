@@ -5,9 +5,15 @@ weight = 100
 url = "/"
 
 [[main]]
+name = "Tags"
+identifier = "tags"
+weight = 200
+url = "/tags/"
+
+[[main]]
 name = "CV"
 identifier = "cv"
-weight = 200
+weight = 1000
 url = "/cv-latest.pdf"
 
 # [[main]]

@@ -24,6 +24,9 @@ localizedDates = false
 [markup.goldmark.renderer]
 unsafe = true
 
+[markup.goldmark.parser.attribute]
+block = true # default is false
+
 [taxonomies]
 category = "categories"
 series = "series"
