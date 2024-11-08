@@ -1,12 +1,17 @@
 baseurl = "https://colinyates.co.uk"
 languageCode = "en"
 title = "Random thoughts"
-theme = "hemingway2"
-copyright = "&copy; <a href=\"https://github.com/beli3ver\">Malte Kiefer</a> 2016"
+theme = "ananke"
+#copyright = "&copy; <a href=\"https://github.com/beli3ver\">Malte Kiefer</a> 2016"
 disqusShortname = "colinyates123"
 googleAnalytics = ""
 description = "Christian, father, husband and Software Engineer."
 keywords = ["keyword1", "keyword2"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [taxonomies]
 tag = "tags"
