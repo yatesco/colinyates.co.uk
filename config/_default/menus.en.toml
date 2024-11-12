@@ -11,9 +11,15 @@ weight = 200
 url = "/tags/"
 
 [[main]]
+name = "Source"
+identifier = "github-source"
+weight = 1000
+url = "https://github.com/yatesco/colinyates.co.uk"
+
+[[main]]
 name = "CV"
 identifier = "cv"
-weight = 1000
+weight = 1100
 url = "/cv-latest.pdf"
 
 # [[main]]
