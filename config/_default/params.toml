@@ -67,6 +67,11 @@ title = "GitHub"
 url = "https://github.com/yatesco/"
 
 [[socialIcons]]
+icon = "fa-brands fa-bluesky"
+title = "BlueSky"
+url = "https://bsky.app/profile/yatesco.bsky.social"
+
+[[socialIcons]]
 icon = "fa-solid fa-envelope"
 title = "e-mail"
 url = "mailto:colin@colinyates.co.uk"
