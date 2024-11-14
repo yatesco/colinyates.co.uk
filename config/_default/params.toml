@@ -72,6 +72,11 @@ title = "BlueSky"
 url = "https://bsky.app/profile/yatesco.bsky.social"
 
 [[socialIcons]]
+icon = "fa-brands fa-mastodon"
+title = "Mastodon"
+url = "https://mastodon.social/@yatesco"
+
+[[socialIcons]]
 icon = "fa-solid fa-envelope"
 title = "e-mail"
 url = "mailto:colin@colinyates.co.uk"
