@@ -1,0 +1,25 @@
+---
+import { stripDateFromTitle } from "../my";
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+
+const includeAuthor = frontmatter?.author;
+const includeImage = frontmatter?.image?.url;
+const title = stripDateFromTitle(frontmatter.title);
+---
+
+<BaseLayout pageTitle={title}>
+  <p>{frontmatter.pubDate.toLocaleDateString("en-GB")}</p>
+  <p><em>{frontmatter.description}</em></p>
+  {includeAuthor && <p>Written by: {frontmatter.author}</p>}
+  {
+    includeImage && (
+      <img
+        src={frontmatter.image.url}
+        width="300"
+        alt={frontmatter.image.alt}
+      />
+    )
+  }
+  <slot />
+</BaseLayout>

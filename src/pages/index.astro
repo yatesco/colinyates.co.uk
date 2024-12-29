@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+const pageTitle = "Here be dragons!";
+
+const allPosts: Array<CollectionEntry<"blog">> = (
+  await getCollection(
+    "blog",
+    ({ data }: CollectionEntry<"blog">) => data.pubDate <= new Date()
+  )
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<style>
+  ul {
+    /* not sure where this comes from but it is set to 40px... */
+    padding: 0;
+    margin: 0;
+  }
+</style>
+
+<BaseLayout pageTitle={pageTitle} url="https://colinyates.co.uk">
+  <ul>
+    {allPosts.map((post) => <BlogPost post={post} />)}
+  </ul>
+</BaseLayout>

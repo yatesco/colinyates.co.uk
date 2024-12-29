@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { date } = Astro.props;
+const formattedDate = date.toISOString().slice(0, 10);
+---
+
+<style>
+  div {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+</style>
+
+<div>
+  <Icon name="mdi:calendar" />
+  <span class="date"> {formattedDate} </span>
+</div>

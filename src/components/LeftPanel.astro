@@ -1,0 +1,161 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<style>
+  /* @media only screen and (max-width: 600px) {
+    .hide-me {
+      display: none;
+    }
+  } */
+
+  section {
+    border-right: solid 1px grey;
+    position: fixed;
+    left: 0;
+    width: 280px;
+    top: 0;
+    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100%; */
+
+    img {
+      border-radius: 30px;
+      /* hack to make the image smaller */
+      padding: 0 50px;
+    }
+
+    img,
+    p {
+      width: 100%;
+      text-align: center;
+    }
+
+    .name,
+    .subtitle {
+      text-transform: uppercase;
+    }
+    .subtitle {
+      font-style: italic;
+      padding: 0 5px;
+    }
+
+    .social {
+      margin-top: 30px;
+      list-style: none;
+      padding: 0;
+      text-align: center;
+
+      a {
+        color: unset;
+        text-decoration: none;
+      }
+      li {
+        display: inline;
+        padding: 0 4px;
+        line-height: 0;
+
+        svg {
+          height: 2em;
+          width: auto;
+        }
+      }
+    }
+
+    .copyright {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+</style>
+
+<div class="hide-me">
+  <section>
+    <div class="main">
+      <img src="/profile.jpg" alt="Profile picture of Colin Yates" />
+      <p class="name">Colin Yates</p>
+      <p class="subtitle">Random thoughts from a random guy</p>
+
+      <ul class="social">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/yatescolin/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Linkedin"
+            title="Linkedin"
+          >
+            <Icon name="mdi:linkedin" />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://github.com/yatesco/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <Icon name="mdi:github" />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://bsky.app/profile/colinyates.co.uk"
+            target="_blank"
+            rel="noopener me"
+            aria-label="BlueSky"
+            title="BlueSky"
+          >
+            <Icon name="mingcute:bluesky-social-fill" />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://mastodon.social/@yatesco"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Mastodon"
+            title="Mastodon"
+          >
+            <Icon name="mdi:mastodon" />
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="mailto:colin@colinyates.co.uk"
+            target="_blank"
+            rel="noopener me"
+            aria-label="e-mail"
+            title="e-mail"
+          >
+            <Icon name="mdi:email" />
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p id="copyright" class="copyright">© Colin Yates 2024</p>
+  </section>
+</div>
+<script>
+  const updateCopyright = () => {
+    const now = new Date();
+    const copyright = document.getElementById("copyright");
+    if (copyright) {
+      copyright.innerHTML = "© Colin Yates " + now.getFullYear();
+    }
+  };
+
+  updateCopyright();
+  setInterval(() => {
+    updateCopyright();
+  }, 2000);
+</script>

@@ -1,0 +1,43 @@
+---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+import LeftPanel from "../components/LeftPanel.astro";
+const { pageTitle } = Astro.props;
+const { url } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content="Colin Yates' blog" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:domain" content="https://colinyates.co.uk" />
+    <meta property="og:url" content={url} />
+    <meta property="og:locale" content="en" />
+    <meta property="og:description" content="The Software and IT specialist" />
+    <meta property="og:site_name" content="Colin Yates' Blog" />
+    <meta property="og:image" content="/profile.jpg" />
+    <meta property="og:image:alt" content="Welcome to Colin Yates' Blog" />
+    <meta property="og:image:width" content="100" />
+    <meta property="og:image:height" content="100" />
+  </head>
+  <body>
+    <Header />
+    <LeftPanel />
+    <h1>{pageTitle}</h1>
+    <slot />
+    <script>
+      import "../scripts/menu.js";
+    </script>
+  </body>
+</html>
