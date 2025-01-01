@@ -29,5 +29,8 @@
   "devDependencies": {
     "prettier-plugin-astro": "^0.14.1"
   },
+  "engine": {
+    "pnpm": "9.15.1"
+  },
   "packageManager": "pnpm"
 }
