@@ -9,11 +9,15 @@ const allPosts: Array<CollectionEntry<"blog">> = (
     "blog",
     ({ data }: CollectionEntry<"blog">) => data.pubDate <= new Date()
   )
-).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+).sort(
+  (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <style>
   ul {
+    width: 100%;
     /* not sure where this comes from but it is set to 40px... */
     padding: 0;
     margin: 0;
