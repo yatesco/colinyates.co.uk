@@ -9,17 +9,19 @@ const title = stripDateFromTitle(frontmatter.title);
 ---
 
 <BaseLayout pageTitle={title}>
-  <p>{frontmatter.pubDate.toLocaleDateString("en-GB")}</p>
-  <p><em>{frontmatter.description}</em></p>
-  {includeAuthor && <p>Written by: {frontmatter.author}</p>}
-  {
-    includeImage && (
-      <img
-        src={frontmatter.image.url}
-        width="300"
-        alt={frontmatter.image.alt}
-      />
-    )
-  }
-  <slot />
+  <article class="w-full px-5">
+    <h1 class="w-full uppercase text-2xl pb-2">{frontmatter.title}</h1>
+    <p class="pb-2">{frontmatter.pubDate.toLocaleDateString("en-GB")}</p>
+    {includeAuthor && <p class="pb-2">Written by: {frontmatter.author}</p>}
+    {
+      includeImage && (
+        <img
+          src={frontmatter.image.url}
+          width="300"
+          alt={frontmatter.image.alt}
+        />
+      )
+    }
+    <slot />
+  </article>
 </BaseLayout>

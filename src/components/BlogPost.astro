@@ -13,55 +13,25 @@ const title = post.data.title;
 const tags = post.data.tags;
 ---
 
-<style>
-  section {
-    border: 2px solid pink;
-    margin: 20px 0;
-    padding: 5px 20px;
-    width: 100%;
-
-    h2 {
-      margin: 5px 0;
-      text-transform: uppercase;
-    }
-  }
-
-  .preview-footer {
-    width: 100%;
-
-    display: flex;
-    .tags {
-      margin-left: auto;
-
-      a {
-        padding: 2px 10px;
-
-        &:hover {
-          background-color: var(--link-highlight);
-
-          font-style: italic;
-        }
-      }
-    }
-  }
-  a {
-    all: unset;
-    cursor: pointer;
-    text-decoration: none;
-  }
-</style>
-
-<section>
+<article class="p-5 border-b-4">
   <a href={url}>
-    <h2>{title}</h2>
+    <h2 class="text-xl uppercase pb-3">{title}</h2>
 
     <BlogPostPreview post={post} />
 
-    <div class="preview-footer">
-      <Date date={post.data.pubDate} />
-      <div class="tags">
-        {tags.map((tag: string) => <a href={`/tags/${tag}`}>{"#" + tag}</a>)}
+    <div class="w-full flex pt-2">
+      <div>
+        <Date date={post.data.pubDate} />
+      </div>
+      <div class="ml-auto">
+        {
+          tags.map((tag: string) => (
+            <a class="border-b-2 p-0m-2" href={`/tags/${tag}`}>
+              {"#" + tag}
+            </a>
+          ))
+        }
       </div>
     </div>
   </a>
-</section>
+</article>

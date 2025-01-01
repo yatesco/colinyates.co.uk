@@ -1,149 +1,78 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const items = [
+  {
+    href: "https://www.linkedin.com/in/yatescolin/",
+    title: "Linkedin",
+    iconName: "mdi:linkedin",
+  },
+  {
+    href: "https://github.com/yatesco/",
+    title: "GitHub",
+    iconName: "mdi:github",
+  },
+
+  {
+    href: "https://bsky.app/profile/colinyates.co.uk",
+    title: "BlueSky",
+    iconName: "mingcute:bluesky-social-fill",
+  },
+
+  {
+    href: "https://mastodon.social/@yatesco",
+    title: "Mastodon",
+    iconName: "mdi:mastodon",
+  },
+  {
+    href: "mailto:colin@colinyates.co.uk",
+    title: "e-mail",
+    iconName: "mdi:email",
+  },
+];
+const currentYear = new Date().getFullYear();
 ---
 
-<style>
-  /* @media only screen and (max-width: 600px) {
-    .hide-me {
-      display: none;
-    }
-  } */
+<!-- styled so main image is centered and copyright is at the bottom.
+ for large screens there is naturally enough gap between the bottom of
+the media icons and the copyright. It's too small for less than that -->
+<div class="h-full border-r-2 border-r-gray-400 min-h-96">
+  <!-- the image and media links -->
+  <!-- this first div is just so the nested div is centered - sigh -->
+  <div class="flex flex-col justify-center items-center h-full">
+    <div class="flex flex-col justify-center h-full
+    text-center">
+      <img
+        class="h-auto lg:w-7/12 mx-auto rounded-full"
+        src="/profile.jpg"
+        alt="Profile picture of Colin Yates"
+      />
+      <p class="uppercase p-3">Colin Yates</p>
+      <p class="uppercase p-3">Random thoughts from a random guy</p>
 
-  section {
-    border-right: solid 1px grey;
-    position: fixed;
-    left: 0;
-    width: 280px;
-    top: 0;
-    bottom: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100%; */
-
-    img {
-      border-radius: 30px;
-      /* hack to make the image smaller */
-      padding: 0 50px;
-    }
-
-    img,
-    p {
-      width: 100%;
-      text-align: center;
-    }
-
-    .name,
-    .subtitle {
-      text-transform: uppercase;
-    }
-    .subtitle {
-      font-style: italic;
-      padding: 0 5px;
-    }
-
-    .social {
-      margin-top: 30px;
-      list-style: none;
-      padding: 0;
-      text-align: center;
-
-      a {
-        color: unset;
-        text-decoration: none;
-      }
-      li {
-        display: inline;
-        padding: 0 4px;
-        line-height: 0;
-
-        svg {
-          height: 2em;
-          width: auto;
+      <ul>
+        {
+          items.map((conf) => (
+            <li class="inline-block">
+              <a
+                href={conf.href}
+                target="_blank"
+                rel="noopener me"
+                aria-label={conf.title}
+                title={conf.title}
+              >
+                <Icon name={conf.iconName} size="2em" />
+              </a>
+            </li>
+          ))
         }
-      }
-    }
-
-    .copyright {
-      position: absolute;
-      bottom: 0;
-    }
-  }
-</style>
-
-<div class="hide-me">
-  <section>
-    <div class="main">
-      <img src="/profile.jpg" alt="Profile picture of Colin Yates" />
-      <p class="name">Colin Yates</p>
-      <p class="subtitle">Random thoughts from a random guy</p>
-
-      <ul class="social">
-        <li>
-          <a
-            href="https://www.linkedin.com/in/yatescolin/"
-            target="_blank"
-            rel="noopener me"
-            aria-label="Linkedin"
-            title="Linkedin"
-          >
-            <Icon name="mdi:linkedin" />
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="https://github.com/yatesco/"
-            target="_blank"
-            rel="noopener me"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <Icon name="mdi:github" />
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="https://bsky.app/profile/colinyates.co.uk"
-            target="_blank"
-            rel="noopener me"
-            aria-label="BlueSky"
-            title="BlueSky"
-          >
-            <Icon name="mingcute:bluesky-social-fill" />
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="https://mastodon.social/@yatesco"
-            target="_blank"
-            rel="noopener me"
-            aria-label="Mastodon"
-            title="Mastodon"
-          >
-            <Icon name="mdi:mastodon" />
-          </a>
-        </li>
-
-        <li>
-          <a
-            href="mailto:colin@colinyates.co.uk"
-            target="_blank"
-            rel="noopener me"
-            aria-label="e-mail"
-            title="e-mail"
-          >
-            <Icon name="mdi:email" />
-          </a>
-        </li>
       </ul>
     </div>
+  </div>
 
-    <p id="copyright" class="copyright">© Colin Yates 2024</p>
-  </section>
+  <div id="copyright" class="absolute bottom-0 py-2 text-center w-full">
+    `© Colin Yates ${currentYear}`
+  </div>
 </div>
 <script>
   const updateCopyright = () => {

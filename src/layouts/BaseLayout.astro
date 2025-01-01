@@ -1,6 +1,5 @@
 ---
 import Header from "../components/Header.astro";
-import "../styles/global.css";
 import LeftPanel from "../components/LeftPanel.astro";
 const { pageTitle } = Astro.props;
 const { url } = Astro.props;
@@ -32,12 +31,33 @@ const { url } = Astro.props;
     <meta property="og:image:height" content="100" />
   </head>
   <body>
-    <Header />
+    <!-- https://lexingtonthemes.com/tutorials/how-to-create-a-responsive-multi-column-layout-with-tailwind-css/ -->
+    <div class="flex min-h-full flex-col">
+      <!-- Main column wrapper -->
+      <div class="mx-auto w-full max-w-7xl grow lg:flex">
+        <!-- Left sidebar & main wrapper -->
+        <div class="flex-1 lg:flex">
+          <aside
+            class="<!-- on 'larger' screens it is sticky to the top -->
+             lg:h-screen lg:sticky lg:top-0 lg:w-3/12"
+          >
+            <LeftPanel />
+          </aside>
+          <!-- Center column -->
+          <div class="lg:flex-1">
+            <Header />
+            <slot />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <Header />
     <LeftPanel />
     <h1>{pageTitle}</h1>
     <slot />
     <script>
       import "../scripts/menu.js";
-    </script>
+    </script> -->
   </body>
 </html>

@@ -15,17 +15,8 @@ const allPosts: Array<CollectionEntry<"blog">> = (
 );
 ---
 
-<style>
-  ul {
-    width: 100%;
-    /* not sure where this comes from but it is set to 40px... */
-    padding: 0;
-    margin: 0;
-  }
-</style>
-
 <BaseLayout pageTitle={pageTitle} url="https://colinyates.co.uk">
-  <ul>
+  <ul class="p-5">
     {allPosts.map((post) => <BlogPost post={post} />)}
   </ul>
 </BaseLayout>

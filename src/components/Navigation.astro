@@ -1,21 +1,25 @@
 ---
-
+const items = [
+  { url: "/", label: "Home" },
+  { url: "/tags/", label: "Tags" },
+  { url: "https://github.com/yatesco/colinyates.co.uk", label: "Source" },
+  { url: "/CV 2024.pdf", label: "My CV" },
+];
 ---
 
-<style>
-  /* this is also styled in global.css */
-  .nav-links {
-    a:last-child {
-      float: right;
-    }
+<nav class="flex">
+  {
+    items.map((item) => (
+      <a
+        class="last:ml-auto
+        text-xl
+        m-5
+      border-b-2 border-gray-600
+      "
+        href={item.url}
+      >
+        {item.label}
+      </a>
+    ))
   }
-</style>
-
-<div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/tags/">Tags</a>
-  <a href="https://github.com/yatesco/colinyates.co.uk" target="_blank"
-    >Source</a
-  >
-  <a href="/CV 2024.pdf" target="_blank">My CV</a>
-</div>
+</nav>

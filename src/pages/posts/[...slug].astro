@@ -15,6 +15,15 @@ const { Content } = await render(post);
 const url = `/posts/${post.id}/`;
 ---
 
+<style is:inline>
+  .hackToPutBackInSpacingForParagraphsThatTailWindStripsOut p {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+  }
+</style>
+
 <MarkdownPostLayout frontmatter={post.data} url={url}>
-  <Content />
+  <div class="hackToPutBackInSpacingForParagraphsThatTailWindStripsOut">
+    <Content />
+  </div>
 </MarkdownPostLayout>

@@ -14,13 +14,15 @@
     "@astrojs/preact": "^4.0.0-beta.1",
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.4",
     "@iconify-json/mdi": "^1.2.2",
     "@iconify-json/mingcute": "^1.2.3",
     "astro": "^5.0.0-beta.12",
     "astro-icon": "^1.1.5",
     "markdown-it": "^14.1.0",
     "preact": "^10.11.3",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "prettier-plugin-astro": "^0.14.1"
