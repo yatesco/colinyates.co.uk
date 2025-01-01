@@ -1,59 +1,30 @@
 ---
-// Consider replacing all of this with one of:
-// * https://github.com/igorskyflyer/npm-astro-post-excerpt
-// * https://www.paulie.dev/posts/2023/09/how-to-create-excerpts-with-astro/
-// * https://chenhuijing.com/blog/creating-excerpts-in-astro/#%F0%9F%96%8A
-import type { CollectionEntry } from "astro:content";
-
-// import { HTMLParser } from "../htmlparser.js";
-
+import type { Fragment, CollectionEntry } from "astro:content";
 import { extractPreview } from "../my";
 interface Props {
   post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
-const previewHtml = extractPreview(post.rendered?.html + "", 1000);
-
-// would *love* to be able to turn the preview into properly formatted
-// HTML but it seems it is just too much to hope for.
-// const unfixedHtml = previewHtml + "";
-// console.log(previewHtml);
-// console.log(unfixedHtml);
-
-// let fixedHtml: string;
-
-// try {
-//   fixedHtml = HTMLParser(unfixedHtml);
-// } catch (error) {
-//   console.error(error);
-//   fixedHtml = unfixedHtml;
-// }
-
-// console.log("UNFIXED", unfixedHtml);
-// console.log("FIXED", fixedHtml);
-
-// until the HTML can be property formatted use an iframe with srcdoc.
-// to be valid for srcdoc there can't be any double quotes, but unfortunately
-// escaping them breaks URLs :-(
-// const previewHtmlEscaped = previewHtml?.replaceAll('"', "&quot;");
-const previewHtmlEscaped = previewHtml;
+const excerpt = extractPreview(post.body + "", 350);
 ---
 
-<!-- <html>
-  <iframe
-    src="data:text/html;base64,SFRNTCBJTiBBIElGUkFNRQ=="
-    frameborder="0"></iframe>
-</html> -->
 <style>
   .preview {
     max-height: 200px;
     width: 100%;
     border: 0;
+    /* padding-bottom: 10px; */
+  }
+
+  pre.preview {
+    white-space: normal;
   }
 </style>
 
-<iframe class="preview" seamless srcdoc={previewHtmlEscaped}></iframe>
-<!-- <div class="preview">
-      <Fragment set:html={previewHtmlEscaped} />
-      </div> -->
+<pre class="preview">
+<Fragment set:html={excerpt} />
+</pre>
+<!-- <p class="preview">
+  {excerpt}
+</p> -->
