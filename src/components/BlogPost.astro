@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 
 import Date from "./Date.astro";
 import BlogPostPreview from "./BlogPostPreview.astro";
+import BlogPostTimeStampAndTags from "./BlogPostTimeStampAndTags.astro";
 interface Props {
   post: CollectionEntry<"blog">;
 }
@@ -10,28 +11,14 @@ interface Props {
 const { post } = Astro.props;
 const url = `/posts/${post.id}/`;
 const title = post.data.title;
-const tags = post.data.tags;
 ---
 
-<article class="p-5 border-b-4">
-  <a href={url}>
-    <h2 class="text-xl uppercase pb-3">{title}</h2>
-
+<!-- NOTE: prose in the article makes the first child lose a whole bunch of head
+space... -->
+<article>
+  <a href={url} class="h-full">
+    <h2 class="pb-2 prose-2xl uppercase">{title}</h2>
     <BlogPostPreview post={post} />
-
-    <div class="w-full flex pt-2">
-      <div>
-        <Date date={post.data.pubDate} />
-      </div>
-      <div class="ml-auto">
-        {
-          tags.map((tag: string) => (
-            <a class="border-b-2 p-0m-2" href={`/tags/${tag}`}>
-              {"#" + tag}
-            </a>
-          ))
-        }
-      </div>
-    </div>
   </a>
+  <BlogPostTimeStampAndTags post={post} />
 </article>

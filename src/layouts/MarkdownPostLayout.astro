@@ -1,27 +1,19 @@
 ---
+import BlogPostTimeStampAndTags from "../components/BlogPostTimeStampAndTags.astro";
 import { stripDateFromTitle } from "../my";
 import BaseLayout from "./BaseLayout.astro";
-const { frontmatter } = Astro.props;
+const { frontmatter, post } = Astro.props;
 
-const includeAuthor = frontmatter?.author;
-const includeImage = frontmatter?.image?.url;
 const title = stripDateFromTitle(frontmatter.title);
 ---
 
 <BaseLayout pageTitle={title}>
-  <article class="w-full px-5">
-    <h1 class="w-full uppercase text-2xl pb-2">{frontmatter.title}</h1>
-    <p class="pb-2">{frontmatter.pubDate.toLocaleDateString("en-GB")}</p>
-    {includeAuthor && <p class="pb-2">Written by: {frontmatter.author}</p>}
-    {
-      includeImage && (
-        <img
-          src={frontmatter.image.url}
-          width="300"
-          alt={frontmatter.image.alt}
-        />
-      )
-    }
-    <slot />
+  <!-- don't put prose here because it will make the h2 too heavy -->
+  <article class="px-5">
+    <h2 class="uppercase prose-2xl">{frontmatter.title}</h2>
+    <BlogPostTimeStampAndTags post={post} />
+    <div class="pt-2">
+      <slot />
+    </div>
   </article>
 </BaseLayout>

@@ -9,9 +9,7 @@ const { post } = Astro.props;
 const excerpt = extractPreview(post.body + "", 350);
 ---
 
-<pre class="whitespace-normal">
+<pre
+  class="whitespace-normal prose max-w-none">
 <Fragment set:html={excerpt} />
 </pre>
-<!-- <p class="preview">
-  {excerpt}
-</p> -->

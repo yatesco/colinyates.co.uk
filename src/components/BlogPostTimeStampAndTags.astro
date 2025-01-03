@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import Date from "./Date.astro";
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const tags = post.data.tags;
+---
+
+<div class="flex pt-2">
+  <div>
+    <Date date={post.data.pubDate} />
+  </div>
+  <div class="ml-auto">
+    {
+      tags.map((tag: string) => (
+        <a class="border-b-2 p-0m-2" href={`/tags/${tag}`}>
+          {"#" + tag}
+        </a>
+      ))
+    }
+  </div>
+</div>

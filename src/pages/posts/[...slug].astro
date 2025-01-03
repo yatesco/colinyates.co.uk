@@ -15,15 +15,13 @@ const { Content } = await render(post);
 const url = `/posts/${post.id}/`;
 ---
 
-<style is:inline>
-  .hackToPutBackInSpacingForParagraphsThatTailWindStripsOut p {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-  }
-</style>
-
-<MarkdownPostLayout frontmatter={post.data} url={url}>
-  <div class="hackToPutBackInSpacingForParagraphsThatTailWindStripsOut">
+<MarkdownPostLayout frontmatter={post.data} url={url} post={post}>
+  <div
+    class="<!-- make it nice -->
+  prose
+  <!-- but don't restrict the width - *pre* must be overwritten to wrap in tailwind.config.X -->
+  max-w-none"
+  >
     <Content />
   </div>
 </MarkdownPostLayout>

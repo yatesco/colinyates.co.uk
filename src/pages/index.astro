@@ -16,7 +16,17 @@ const allPosts: Array<CollectionEntry<"blog">> = (
 ---
 
 <BaseLayout pageTitle={pageTitle} url="https://colinyates.co.uk">
-  <ul class="p-5">
-    {allPosts.map((post) => <BlogPost post={post} />)}
-  </ul>
+  {
+    allPosts.map((post) => {
+      return (
+        <div class="px-5">
+          <BlogPost post={post} />
+          {/* h1 equivalent separator */}
+          <div class="inline-flex items-center justify-center w-full">
+            <hr class="w-full h-1 my-6 bg-gray-200 dark:bg-gray-700" />
+          </div>
+        </div>
+      );
+    })
+  }
 </BaseLayout>

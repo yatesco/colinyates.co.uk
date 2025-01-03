@@ -1,97 +1,40 @@
-:root {
-  --link-highlight: #ff9776;
-}
+/* line numbers */
+/* pre {
+  @apply rounded-md pl-8;
 
-body {
-  font:
-    normal 14px Verdana,
-    Arial,
-    sans-serif;
+  code {
+    @apply block leading-tight p-2 pl-1;
+    font-size: 17px;
+    border-left: 1px solid rgba(115, 138, 148, 0.4);
+    counter-reset: step;
+    counter-increment: step 0;
 
-  /* width: 100%; */
+    .line {
+      @apply relative;
+    }
 
-  /* margin: 0 auto; */
-  /* make room for the left hand side */
-  margin-left: 300px;
+    .line::before {
+      @apply absolute overflow-hidden w-7 h-4 -left-9 top-0 text-right;
+      content: counter(step);
+      counter-increment: step;
+      color: rgba(115, 138, 148, 0.4);
+    }
+  }
+} */
 
-  padding: 0 1rem;
-  line-height: 1.5;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-/* nav styles */
-
-.hamburger {
-  padding-right: 20px;
-  cursor: pointer;
-}
-
-.hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: var(--link-highlight);
-}
-
-.nav-links {
-  width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: var(--link-highlight);
-  display: none;
-  margin: 0;
-}
-
-.nav-links a {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-  background-color: var(--link-highlight);
-}
-
-.expanded {
-  display: unset;
-}
-
-@media screen and (min-width: 636px) {
-  .nav-links {
-    display: block;
-    position: static;
-    width: auto;
-    background: none;
+pre {
+  code {
+    counter-reset: step;
+    counter-increment: step 0;
   }
 
-  .nav-links a {
+  code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1rem;
+    margin-right: 1.5rem;
     display: inline-block;
-    padding: 15px 20px;
+    text-align: right;
+    color: rgba(126, 143, 150, 0.834);
   }
-
-  .hamburger {
-    display: none;
-  }
-}
-
-html.dark {
-  background-color: #0d0950;
-  color: #fff;
-}
-
-.dark a {
-  color: #fff;
 }
