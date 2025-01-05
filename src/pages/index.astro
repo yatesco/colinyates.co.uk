@@ -1,32 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
+
 import { getCollection, type CollectionEntry } from "astro:content";
+import BlogList from "../components/BlogList.astro";
 const pageTitle = "Here be dragons!";
 
-const allPosts: Array<CollectionEntry<"blog">> = (
-  await getCollection(
-    "blog",
-    ({ data }: CollectionEntry<"blog">) => data.pubDate <= new Date()
-  )
-).sort(
-  (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
-    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+const posts: Array<CollectionEntry<"blog">> = await getCollection(
+  "blog",
+  ({ data }: CollectionEntry<"blog">) => data.pubDate <= new Date()
 );
 ---
 
-<BaseLayout pageTitle={pageTitle} url="https://colinyates.co.uk">
-  {
-    allPosts.map((post) => {
-      return (
-        <div class="px-5">
-          <BlogPost post={post} />
-          {/* h1 equivalent separator */}
-          <div class="inline-flex items-center justify-center w-full">
-            <hr class="w-full h-1 my-6 bg-gray-200 dark:bg-gray-700" />
-          </div>
-        </div>
-      );
-    })
-  }
+<BaseLayout pageTitle={pageTitle}>
+  <BlogList posts={posts} />
 </BaseLayout>

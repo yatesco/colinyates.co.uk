@@ -1,0 +1,26 @@
+---
+import BlogPost from "../components/BlogPost.astro";
+import type { CollectionEntry } from "astro:content";
+const { posts } = Astro.props;
+
+const allPosts: Array<CollectionEntry<"blog">> = posts.sort(
+  (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<div>
+  {
+    allPosts.map((post) => {
+      return (
+        <div class="px-5">
+          <BlogPost post={post} />
+          {/* h1 equivalent separator */}
+          <div class="inline-flex items-center justify-center w-full">
+            <hr class="w-full h-1 my-6 bg-gray-200 dark:bg-gray-700" />
+          </div>
+        </div>
+      );
+    })
+  }
+</div>

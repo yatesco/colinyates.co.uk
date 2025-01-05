@@ -1,24 +1,31 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
-const allPosts = (
-  await getCollection(
-    "blog",
-  )
-);
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("blog");
 
-const tags = [
-  ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
-];
+const allTags: Map<string, number> = new Map();
+
+allPosts.map((p) => {
+  p.data.tags.forEach((tag) => {
+    const existingN = allTags.get(tag) || 0;
+    allTags.set(tag, existingN + 1);
+  });
+});
+// sort tags by keys
+const tags = new Map([...allTags.entries()].sort());
+
 const pageTitle = "Tag Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="tags">
+  <div class="tags flex flex-wrap">
     {
-      tags.map((tag: string) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
+      tags.entries().map((entry) => (
+        <p
+          class="tag
+        "
+        >
+          <a href={`/tags/${entry[0]}`}>{`${entry[0]} (${entry[1]})`}</a>
         </p>
       ))
     }
@@ -27,12 +34,6 @@ const pageTitle = "Tag Index";
 <style>
   a {
     color: #00539f;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
   }
 
   .tag {

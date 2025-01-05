@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Relative links in org-mode and Jekyll"
 pubDate: 2015-09-05
-tags: ["org-mode", "emacs", "jeykll", "faq"]
+tags: ["org-mode", "emacs", "jekyll", "faq"]
 ---
 
 > Be careful - this is an old post and may not work anymore!
