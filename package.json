@@ -29,7 +29,7 @@
   "engines": {
     "npm": ">=10.9.2",
     "node": ">=23.5.0",
-    "pnpm": "9.15.1"
+    "pnpm": ">=9.15.1"
   },
   "packageManager": "pnpm@9.15.1"
 }
