@@ -11,7 +11,7 @@ I learned the following lessons today:
 
 - Simplest is best
 - Evaluate your assumptions
-- Sometimes development is just <span class="underline">hard</span>
+- Sometimes development is just **hard**
 
 In a nutshell, our production app records UI errors and submits them to the server where they are pushed to the `error-handler`. Similarly, if an Exception is raised server side it is also pushed to the `error-handler`. However, the errors that had been captured were all ridiculously long stack traces with no references to any of my code.
 

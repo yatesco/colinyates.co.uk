@@ -8,6 +8,7 @@ interface Props {
 
 const { post } = Astro.props;
 const tags = post.data.tags;
+tags.sort();
 ---
 
 <div class="flex pt-2">
