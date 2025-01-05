@@ -10,9 +10,9 @@ const title = stripDateFromTitle(frontmatter.title);
 <BaseLayout pageTitle={title}>
   <!-- don't put prose here because it will make the h2 too heavy -->
   <article class="px-5">
-    <h2 class="uppercase prose-2xl">{frontmatter.title}</h2>
+    <h1 class="uppercase prose-2xl">{frontmatter.title}</h1>
     <BlogPostTimeStampAndTags post={post} />
-    <div class="pt-2">
+    <div class="pt-5">
       <slot />
     </div>
   </article>
