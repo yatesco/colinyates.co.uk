@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: My first (real) LinkedIn post - woot!
-pubDate: 2025-01-17
+pubDate: 2025-01-17T14:30:00.000
 tags:
   - linkedin
 ---
