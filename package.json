@@ -19,11 +19,15 @@
     "astro": "^5.1.1",
     "astro-icon": "^1.1.5",
     "markdown-it": "^14.1.0",
+    "node-html-parser": "^7.0.1",
+    "sanitize-html": "^2.14.0",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
+    "@types/markdown-it": "^14.1.2",
+    "@types/sanitize-html": "^2.13.0",
     "prettier-plugin-astro": "^0.14.1"
   },
   "engines": {

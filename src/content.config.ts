@@ -1,5 +1,8 @@
 // 1. Import utilities from `astro:content`
 import { defineCollection, z } from "astro:content";
+// seems we can use this instead of defining a schema manually?
+// https://docs.astro.build/en/recipes/rss/#using-content-collections
+// import { rssSchema } from '@astrojs/rss';
 
 // 2. Import loader(s)
 import { glob } from "astro/loaders";
