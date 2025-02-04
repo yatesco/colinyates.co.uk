@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// export async function getStaticPaths() {
+//   const allPosts = await getCollection("blog");
+
+//   const uniqueTags = [
+//     ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
+//   ];
+
+//   return uniqueTags.map((tag: string) => {
+//     const filteredPosts = allPosts.filter((post: CollectionEntry<"blog">) =>
+//       post.data.tags.includes(tag)
+//     );
+//     return {
+//       params: { tag },
+//       props: { posts: filteredPosts },
+//     };
+//   });
+// }
+
+// const { tag } = Astro.params;
+// const { posts } = Astro.props;
+// const pageTitle = `[${tag}] posts`;
+
+const quotes = [
+  {
+    who: ["Alex Knight", "Founder QFI Consulting"],
+    email: null,
+    what: [
+      "Colin was the head of software development for QFI Consulting for over twenty years and was responsible for all aspects of the development of a full healthcare solution delivering increased quality of care, increased patient throughput with less overall resources.",
+      "He delivered the full cycle turning the product blueprint into a fully functional software solution implemented in many hospitals around the world.  This included a highly sophisticated analytic capability never matched by any of the competitors.",
+      "As well as being a product developer and world class software engineer he is able to work alongside international client teams based in mainland Europe, USA, Japan and the U.K. to ensure smooth implementation and rapid results. It is difficult to stress just how unique and special Colin’s capabilities are.",
+      "He is truly exceptional and has been regularly praised by many clients for delivering very high quality software that is simple to use.",
+    ],
+  },
+  {
+    who: ["Johan Groop", "Senior Partner at Nordic Healthcare Group"],
+    email: null,
+    what: [
+      "I had the privilege of working with Colin for several years, first, while he was working for a partner organization, and later as part of my team. Colin demonstrated a passionate, experienced, and highly skilled approach to both leading and mentoring the technical development team and instigating and implementing Software Engineering practices.",
+      "He took a very hands-on approach to making the software team a safe space for the team members to up-skill, learn, and safely fail, underpinned by a sound practice of “hands-on pragmatic excellence” whilst still producing robust and effective software. Excellence, but not at the cost of real-world needs.",
+      "His skills and flexibility, whether that is Software Engineering, strategy and tactics, hands-on development, client facing engagement, or hard-core code development were invaluable, and it was a true pleasure working with him.",
+      "Colin is a technically excellent all-rounder, who is also approachable and easy to get on with. A true gem.",
+    ],
+  },
+  {
+    who: ["Miki Suominen", "Software Engineer at Nordic Healthcare Group"],
+    email: null,
+    what: [
+      "Colin's expertise in team leadership, philosophy of software design, and passion for mentoring and continuous learning are truly inspirational. The time I spent under his supervision was invaluable for my career growth, and I feel blessed to have had the opportunity to learn so much from him.",
+      "He has an exceptional ability to extract value from every situation and a talent for solving the most complex problems. Colin's leadership consistently results in intuitive and effective solutions, demonstrating his deep industry knowledge.",
+      "In addition to his professional excellence, Colin is a truly amazing person to work with. His approachable nature, genuine care for his team, and positive attitude made every interaction a pleasure.",
+      "Colin is an outstanding team leader.",
+    ],
+  },
+];
+---
+
+<BaseLayout pageTitle="References">
+  <div>
+    {
+      quotes.map((quote) => (
+        <div class="bg-white border-2 border-gray-200 shadow-sm rounded-xl m-4 p-12 md:p-5 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+          <blockquote class="relative">
+            <svg
+              class="absolute -top-6 -start-8 size-16 text-gray-100 dark:text-neutral-700"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M7.39762 10.3C7.39762 11.0733 7.14888 11.7 6.6514 12.18C6.15392 12.6333 5.52552 12.86 4.76621 12.86C3.84979 12.86 3.09047 12.5533 2.48825 11.94C1.91222 11.3266 1.62421 10.4467 1.62421 9.29999C1.62421 8.07332 1.96459 6.87332 2.64535 5.69999C3.35231 4.49999 4.33418 3.55332 5.59098 2.85999L6.4943 4.25999C5.81354 4.73999 5.26369 5.27332 4.84476 5.85999C4.45201 6.44666 4.19017 7.12666 4.05926 7.89999C4.29491 7.79332 4.56983 7.73999 4.88403 7.73999C5.61716 7.73999 6.21938 7.97999 6.69067 8.45999C7.16197 8.93999 7.39762 9.55333 7.39762 10.3ZM14.6242 10.3C14.6242 11.0733 14.3755 11.7 13.878 12.18C13.3805 12.6333 12.7521 12.86 11.9928 12.86C11.0764 12.86 10.3171 12.5533 9.71484 11.94C9.13881 11.3266 8.85079 10.4467 8.85079 9.29999C8.85079 8.07332 9.19117 6.87332 9.87194 5.69999C10.5789 4.49999 11.5608 3.55332 12.8176 2.85999L13.7209 4.25999C13.0401 4.73999 12.4903 5.27332 12.0713 5.85999C11.6786 6.44666 11.4168 7.12666 11.2858 7.89999C11.5215 7.79332 11.7964 7.73999 12.1106 7.73999C12.8437 7.73999 13.446 7.97999 13.9173 8.45999C14.3886 8.93999 14.6242 9.55333 14.6242 10.3Z"
+                fill="currentColor"
+              />
+            </svg>
+
+            <div class="relative z-10">
+              {quote.what.map((what) => (
+                <p
+                  class="
+              py-2
+              text-gray-800 sm:text-xl dark:text-white"
+                >
+                  <em>{what}</em>
+                </p>
+              ))}
+            </div>
+
+            <footer class="mt-4">
+              <div class="text-base font-semibold text-gray-800 dark:text-neutral-400">
+                {quote.who.map((who) => (
+                  <p>{who}</p>
+                ))}
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>
