@@ -16,7 +16,7 @@
     "@astrojs/tailwind": "^5.1.5",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/mingcute": "^1.2.3",
-    "astro": "^5.2.4",
+    "astro": "^5.14.3",
     "astro-icon": "^1.1.5",
     "markdown-it": "^14.1.0",
     "node-html-parser": "^7.0.1",
