@@ -15,13 +15,8 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
       '@astrojs/tailwind':
-<<<<<<< HEAD
         specifier: ^6.0.0
-        version: 6.0.2(astro@5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@3.4.17)
-=======
-        specifier: ^5.1.5
-        version: 5.1.5(astro@5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@4.1.17)
->>>>>>> 1657209 (Update dependency tailwindcss to v4)
+        version: 6.0.2(astro@5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@4.1.17)
       '@iconify-json/mdi':
         specifier: ^1.2.3
         version: 1.2.3
@@ -1515,17 +1510,11 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-<<<<<<< HEAD
-  mz@2.7.0:
-    resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
-
   nanoid@3.3.11:
     resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-=======
->>>>>>> 1657209 (Update dependency tailwindcss to v4)
   nanoid@3.3.8:
     resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -2227,23 +2216,13 @@ snapshots:
       stream-replace-string: 2.0.0
       zod: 3.24.1
 
-<<<<<<< HEAD
-  '@astrojs/tailwind@6.0.2(astro@5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@3.4.17)':
+  '@astrojs/tailwind@6.0.2(astro@5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@4.1.17)':
     dependencies:
       astro: 5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0)
       autoprefixer: 10.4.21(postcss@8.5.6)
       postcss: 8.5.6
       postcss-load-config: 4.0.2(postcss@8.5.6)
-      tailwindcss: 3.4.17
-=======
-  '@astrojs/tailwind@5.1.5(astro@5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0))(tailwindcss@4.1.17)':
-    dependencies:
-      astro: 5.2.4(@types/node@22.13.1)(jiti@1.21.7)(rollup@4.34.2)(typescript@5.7.2)(yaml@2.7.0)
-      autoprefixer: 10.4.20(postcss@8.5.1)
-      postcss: 8.5.1
-      postcss-load-config: 4.0.2(postcss@8.5.1)
       tailwindcss: 4.1.17
->>>>>>> 1657209 (Update dependency tailwindcss to v4)
     transitivePeerDependencies:
       - ts-node
 
@@ -3854,17 +3833,8 @@ snapshots:
 
   ms@2.1.3: {}
 
-<<<<<<< HEAD
-  mz@2.7.0:
-    dependencies:
-      any-promise: 1.3.0
-      object-assign: 4.1.1
-      thenify-all: 1.6.0
-
   nanoid@3.3.11: {}
 
-=======
->>>>>>> 1657209 (Update dependency tailwindcss to v4)
   nanoid@3.3.8: {}
 
   neotraverse@0.6.18: {}
@@ -3981,14 +3951,6 @@ snapshots:
       mlly: 1.7.4
       pathe: 2.0.2
 
-  postcss-load-config@4.0.2(postcss@8.5.1):
-    dependencies:
-      lilconfig: 3.1.3
-      yaml: 2.7.0
-    optionalDependencies:
-      postcss: 8.5.1
-
-<<<<<<< HEAD
   postcss-load-config@4.0.2(postcss@8.5.6):
     dependencies:
       lilconfig: 3.1.3
@@ -3996,13 +3958,6 @@ snapshots:
     optionalDependencies:
       postcss: 8.5.6
 
-  postcss-nested@6.2.0(postcss@8.5.1):
-    dependencies:
-      postcss: 8.5.1
-      postcss-selector-parser: 6.1.2
-
-=======
->>>>>>> 1657209 (Update dependency tailwindcss to v4)
   postcss-selector-parser@6.0.10:
     dependencies:
       cssesc: 3.0.0
@@ -4493,7 +4448,7 @@ snapshots:
   vite@6.0.11(@types/node@22.13.1)(jiti@1.21.7)(yaml@2.7.0):
     dependencies:
       esbuild: 0.24.2
-      postcss: 8.5.1
+      postcss: 8.5.6
       rollup: 4.34.2
     optionalDependencies:
       '@types/node': 22.13.1
