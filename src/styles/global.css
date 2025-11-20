@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
 /* line numbers */
 /* pre {
   @apply rounded-md pl-8;

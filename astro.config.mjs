@@ -2,12 +2,17 @@ import { defineConfig } from "astro/config";
 
 import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
+import plugin from "@tailwindcss/typography"
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://colinyates.co.uk",
-  integrations: [icon(), sitemap(), tailwind()],
+  integrations: [icon(), sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   markdown: {
     shikiConfig: {
       themes: {
