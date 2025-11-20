@@ -11,8 +11,6 @@ on:
 jobs:
   cloudflare:
     runs-on: ubuntu-latest
-    env:
-      MISE_SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
     steps:
       - name: Add node
         run: apt update && apt -y install nodejs
@@ -27,6 +25,7 @@ jobs:
           cache: false # [default: true] cache mise using GitHub's cache
           experimental: true # [default: false] enable experimental features
           log_level: debug # [default: info] log level
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
       - run: |
           pnpm build
           pnpm wrangler deploy
