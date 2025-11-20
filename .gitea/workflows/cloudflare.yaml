@@ -29,5 +29,6 @@ jobs:
           log_level: debug # [default: info] log level
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
       - run: |
+          pnpm install
           pnpm build
           pnpm wrangler deploy
