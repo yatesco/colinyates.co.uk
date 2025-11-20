@@ -1,0 +1,53 @@
+[settings]
+idiomatic_version_file_enable_tools = ["node", "pnpm"]
+
+[env]
+_.file = { path = "{{config_root}}/.env.json", redact = true }
+_.path = ["{{config_root}}/node_modules/.bin"]
+# Use the project name derived from the current directory
+PROJECT_NAME = "{{ config_root | basename }}"
+# Set up the path for node module binaries
+BIN_PATH = "{{ config_root }}/node_modules/.bin"
+
+[tools]
+# for security stuff
+age = "1.2.0"
+sops = "3.10.0"
+# for the project itself
+node = "lts"
+pnpm = "10.22.0"
+python = "3.13.2"
+
+[tasks]
+[tasks.libs]
+description = "Install development libraries"
+run = "pnpm install"
+
+[tasks.dev]
+description = "Start development server"
+run = "pnpm run dev"
+
+[tasks.prod]
+description = "Build and deploy the site to cloudflare"
+alias = "dist"
+depends = ["prod:build", "prod:deploy"]
+
+[tasks."prod:build"]
+description = "Build production"
+run = "pnpm run build"
+
+[tasks."prod:launch"]
+description = "Launch production web server"
+run = "cd dist && python -m http.server 8000"
+
+[tasks."prod:deploy"]
+description = "Deploy the website to cloudflare"
+run = "pnpm wrangler deploy"
+
+[tasks."security:decrypt"]
+description = "Decrypt the files (only for dev!)"
+run = "sops decrypt -i {{config_root}}/.env.json"
+
+[tasks."security:encrypt"]
+description = "Encrypt the files"
+run = "sops encrypt -i {{config_root}}/.env.json"

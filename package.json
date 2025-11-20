@@ -11,24 +11,31 @@
     "astro": "astro"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
+=======
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/tailwind": "^6.0.2",
+>>>>>>> eb00c90 (cloudflare static site)
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/mingcute": "^1.2.3",
-    "@tailwindcss/postcss": "^4.0.0",
+    "@iconify-json/mingcute": "^1.2.5",
+    "@tailwindcss/postcss": "^4.1.17",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.2.4",
+    "astro": "^5.16.0",
     "astro-icon": "^1.1.5",
     "markdown-it": "^14.1.0",
     "node-html-parser": "^7.0.1",
-    "sanitize-html": "^2.14.0",
-    "sharp": "^0.34.0",
-    "tailwindcss": "^4.0.0"
+    "sanitize-html": "^2.17.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.17",
+    "wrangler": "^4.49.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/typography": "^0.5.19",
     "@types/markdown-it": "^14.1.2",
-    "@types/sanitize-html": "^2.13.0",
+    "@types/sanitize-html": "^2.16.0",
     "prettier-plugin-astro": "^0.14.1"
   },
   "engines": {
