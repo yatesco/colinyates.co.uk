@@ -1,0 +1,32 @@
+name: cloudflare
+
+on:
+  # schedule:
+  #   - cron: "@daily"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  cloudflare:
+    runs-on: ubuntu-latest
+    env:
+      MISE_SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+    steps:
+      - name: Add node
+        run: apt update && apt -y install nodejs
+      - name: Activate mise
+        run: echo "eval \"\$(~/.local/bin/mise activate bash)\"" >> ~/.bashrc
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build and deploy
+        uses: jdx/mise-action@v3
+        with:
+          install: true # [default: true] run `mise install`
+          cache: false # [default: true] cache mise using GitHub's cache
+          experimental: true # [default: false] enable experimental features
+          log_level: debug # [default: info] log level
+      - run: |
+          pnpm build
+          pnpm wrangler deploy
