@@ -7,10 +7,27 @@
     },
     "workers_dev": true,
     "preview_urls": true,
-    "routes": [
-        {
-            "pattern": "colinyates.co.uk",
-            "custom_domain": true
+    "vars": {
+        "ENVIRONMENT": "dev"
+    },
+    "env": {
+        "staging": {
+            "vars": {
+                "ENVIRONMENT": "staging"
+            },
+            // to enable this you need to make it a custom domain, otherwise it will be done on the development one (https://colinyates_co_uk-static-staging.colin-142.workers.dev)
+            // "route": "blog-staging.colinyates.co.uk/*"
+        },
+        "production": {
+            "vars": {
+                "ENVIRONMENT": "production"
+            },
+            "routes": [
+                {
+                    "pattern": "colinyates.co.uk",
+                    "custom_domain": true
+                }
+            ]
         }
-    ]
+    }
 }
