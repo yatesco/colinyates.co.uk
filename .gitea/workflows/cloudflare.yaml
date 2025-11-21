@@ -15,7 +15,7 @@ jobs:
       MISE_SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Build and deploy
         uses: jdx/mise-action@v3
         with:
