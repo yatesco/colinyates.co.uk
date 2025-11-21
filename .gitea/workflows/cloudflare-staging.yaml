@@ -1,15 +1,13 @@
-name: cloudflare
+name: cloudflare (staging)
 
 on:
-  # schedule:
-  #   - cron: "@daily"
   workflow_dispatch:
   push:
-    branches:
+    branches-ignore:
       - main
 
 jobs:
-  cloudflare:
+  staging:
     runs-on: ubuntu-latest
     env:
       MISE_SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
@@ -27,4 +25,4 @@ jobs:
       - run: |
           pnpm install
           pnpm build
-          pnpm wrangler deploy --env=production
+          pnpm wrangler deploy --env=staging
