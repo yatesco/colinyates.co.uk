@@ -24,7 +24,9 @@ jobs:
           experimental: true # [default: false] enable experimental features
           log_level: debug # [default: info] log level
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-      - run: |
-          pnpm install
-          pnpm build
-          pnpm wrangler deploy --env=production
+      - name: Install dependencies
+        run: mise run libs
+      - name: Build
+        run: mise run prod:build
+      - name: Deploy
+        run: mise run prod:deploy

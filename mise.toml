@@ -1,5 +1,5 @@
 [settings]
-idiomatic_version_file_enable_tools = ["node", "pnpm"]
+idiomatic_version_file_enable_tools = ["node", "npm"]
 
 [env]
 _.file = { path = "{{config_root}}/.env.json", redact = true }
@@ -15,17 +15,17 @@ age = "1.2.0"
 sops = "3.11.0"
 # for the project itself
 node = "lts"
-pnpm = "10.23.0"
+npm = "10.23.0"
 python = "3.14.0"
 
 [tasks]
 [tasks.libs]
 description = "Install development libraries"
-run = "pnpm install"
+run = "npm install"
 
 [tasks.dev]
 description = "Start development server"
-run = "pnpm run dev"
+run = "npm run dev"
 
 [tasks.prod]
 description = "Build and deploy the site to cloudflare"
@@ -34,15 +34,19 @@ depends = ["prod:build", "prod:deploy"]
 
 [tasks."prod:build"]
 description = "Build production"
-run = "pnpm run build"
+run = "npm run build"
 
 [tasks."prod:launch"]
 description = "Launch production web server"
 run = "cd dist && python -m http.server 8000"
 
 [tasks."prod:deploy"]
-description = "Deploy the website to cloudflare"
-run = "pnpm wrangler deploy"
+description = "Deploy the website to cloudflare (PROD)"
+run = "wrangler deploy --env=production"
+
+[tasks."staging:deploy"]
+description = "Deploy the website to cloudflare (STAGING)"
+run = "wrangler deploy --env=staging"
 
 [tasks."security:decrypt"]
 description = "Decrypt the files (only for dev!)"
