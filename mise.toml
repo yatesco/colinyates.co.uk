@@ -16,7 +16,7 @@ sops = "3.11.0"
 # for the project itself
 node = "lts"
 npm = "11.6.2"
-python = "3.14.0"
+python = "3.14.1"
 
 [tasks]
 [tasks.libs]
