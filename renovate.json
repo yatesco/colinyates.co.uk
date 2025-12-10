@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "gitea>colinyates/renovate-config:renovate_defaults"
+    "gitea>coliny/renovate-config:renovate_defaults"
   ]
 }
