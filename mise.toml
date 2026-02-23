@@ -12,7 +12,7 @@ BIN_PATH = "{{ config_root }}/node_modules/.bin"
 [tools]
 # for security stuff
 age = "1.2.0"
-sops = "3.11.0"
+sops = "3.12.1"
 # for the project itself
 node = "24.13.1"
 npm = "11.6.2"
