@@ -5,6 +5,8 @@ pubDate: 2025-12-06T17:29:34Z
 tags: [caddy, tip, ci]
 ---
 
+NOTE: I will be investigating using [docker labels](https://github.com/lucaslorentz/caddy-docker-proxy) with this soon...
+
 [Caddy](https://caddyserver.com) supports `--watch`ing and automatically reloading the Caddyfile but unfortunately, this isn't enabled in various [docker images](https://github.com/caddyserver/caddy-docker).
 
 This means you need to refresh (or poke the docker container) everytime you change the "Caddyfile".
