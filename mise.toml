@@ -40,14 +40,6 @@ run = "npm run build"
 description = "Launch production web server"
 run = "cd dist && python -m http.server 8000"
 
-[tasks."prod:deploy"]
-description = "Deploy the website to cloudflare (PROD)"
-run = "wrangler deploy --env=production"
-
-[tasks."staging:deploy"]
-description = "Deploy the website to cloudflare (STAGING)"
-run = "wrangler deploy --env=staging"
-
 [tasks."security:decrypt"]
 description = "Decrypt the files (only for dev!)"
 run = "sops decrypt -i {{config_root}}/.env.json"

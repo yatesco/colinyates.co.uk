@@ -77,26 +77,38 @@ jobs:
     needs: playwright
     runs-on: ubuntu-latest
     env:
-      MISE_SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+      SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Install mise
-        uses: jdx/mise-action@v3
-        with:
-          install: true
-          cache: false
-          experimental: true
-          log_level: debug
-          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
-      - name: Install dependencies
-        run: mise run libs
-      - name: Build
-        run: mise run prod:build
-      - name: Deploy
+      - name: Install sops
         run: |
-          if [ "$GITEA_REF_NAME" = "main" ]; then
-            mise run prod:deploy
+          SOPS_VERSION="v3.12.1"
+          curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64
+          sudo mv sops-${SOPS_VERSION}.linux.amd64 /usr/local/bin/sops
+          sudo chmod +x /usr/local/bin/sops
+      - name: Decrypt secrets
+        run: sops decrypt -i .env.json
+      - name: Export and echo Cloudflare secrets
+        run: |
+          export CLOUDFLARE_API_TOKEN=$(jq -r '.CLOUDFLARE_API_TOKEN' .env.json)
+          export CLOUDFLARE_ACCOUNT_ID=$(jq -r '.CLOUDFLARE_ACCOUNT_ID' .env.json)
+          echo "CLOUDFLARE_API_TOKEN: $CLOUDFLARE_API_TOKEN"
+          echo "CLOUDFLARE_ACCOUNT_ID: $CLOUDFLARE_ACCOUNT_ID"
+      - name: Install dependencies
+        run: npm ci
+      - name: Download dist artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+      - name: Extract dist
+        run: tar -xzf dist.tar.gz
+      - name: Deploy to Cloudflare
+        run: |
+          export CLOUDFLARE_API_TOKEN=$(jq -r '.CLOUDFLARE_API_TOKEN' .env.json)
+          export CLOUDFLARE_ACCOUNT_ID=$(jq -r '.CLOUDFLARE_ACCOUNT_ID' .env.json)
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            npm run prod:deploy
           else
-            mise run staging:deploy
+            npm run staging:deploy
           fi

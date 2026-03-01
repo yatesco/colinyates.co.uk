@@ -13,7 +13,9 @@
     "serve": "serve",
     "wait-on": "wait-on",
     "test:e2e": "playwright test",
-    "add-untested-pages": "tsx scripts/add-untested-pages.ts"
+    "add-untested-pages": "tsx scripts/add-untested-pages.ts",
+    "prod:deploy": "wrangler deploy --env=production",
+    "staging:deploy": "wrangler deploy --env=staging"
   },
   "dependencies": {
     "@astrojs/rss": "4.0.15",
