@@ -15,7 +15,7 @@ age = "1.2.0"
 sops = "3.12.1"
 # for the project itself
 node = "24.14.0"
-npm = "11.6.2"
+npm = "11.11.0"
 python = "3.14.3"
 
 [tasks]
@@ -55,3 +55,11 @@ run = "sops decrypt -i {{config_root}}/.env.json"
 [tasks."security:encrypt"]
 description = "Encrypt the files"
 run = "sops encrypt -i {{config_root}}/.env.json"
+
+[tasks."playwright:snapshots"]
+description = "Generate Playwright regression snapshots in CI Docker image (Linux)"
+run = "docker run --rm -v $PWD:/workspace -w /workspace mcr.microsoft.com/playwright:v1.58.2-noble bash -c 'npm ci && npm run build && nohup npm run serve ./dist > /dev/null 2>&1 & SERVER_PID=$! && npm run wait-on http://localhost:3000 && npm run test:e2e -- --update-snapshots; kill $SERVER_PID'"
+
+[tasks."playwright:test:e2e"]
+description = "Run Playwright tests in Linux Docker for consistent snapshot filenames"
+run = "docker run --rm -v $PWD:/workspace -w /workspace mcr.microsoft.com/playwright:v1.58.2-noble bash -c 'npm ci && npm run build && nohup npm run serve ./dist > /dev/null 2>&1 & SERVER_PID=$! && npm run wait-on http://localhost:3000 && npx playwright test; kill $SERVER_PID'"

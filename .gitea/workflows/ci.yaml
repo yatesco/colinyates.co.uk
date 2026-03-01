@@ -1,0 +1,87 @@
+name: Main CI
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+jobs:
+  build_dist:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Astro site
+        run: npm run build
+      - name: Archive dist
+        run: tar -czf dist.tar.gz dist/
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist.tar.gz
+          retention-days: 1
+
+  playwright:
+    needs: build_dist
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install dependencies
+        run: npm ci
+      - name: Download dist artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+      - name: Extract dist
+        run: tar -xzf dist.tar.gz
+      - name: List dist files
+        run: ls -l ./dist
+      - name: Run Playwright tests
+        run: npm run test:e2e
+      - name: Archive Playwright report
+        run: tar -czf playwright-report.tar.gz playwright-report/
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report.tar.gz
+
+  deploy:
+    needs: playwright
+    runs-on: ubuntu-latest
+    env:
+      MISE_SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install mise
+        uses: jdx/mise-action@v3
+        with:
+          install: true
+          cache: false
+          experimental: true
+          log_level: debug
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
+      - name: Install dependencies
+        run: mise run libs
+      - name: Build
+        run: mise run prod:build
+      - name: Deploy
+        run: |
+          if [ "$GITEA_REF_NAME" = "main" ]; then
+            mise run prod:deploy
+          else
+            mise run staging:deploy
+          fi
