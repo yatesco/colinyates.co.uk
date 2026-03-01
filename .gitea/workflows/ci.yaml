@@ -48,15 +48,30 @@ jobs:
         run: tar -xzf dist.tar.gz
       - name: List dist files
         run: ls -l ./dist
+      - name: Add untested blog pages
+        run: npm run add-untested-pages
       - name: Run Playwright tests
         run: npm run test:e2e
       - name: Archive Playwright report
+        if: always()
         run: tar -czf playwright-report.tar.gz playwright-report/
       - name: Upload Playwright report
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: playwright-report
           path: playwright-report.tar.gz
+          retention-days: 1
+      - name: Archive Playwright test results
+        if: always()
+        run: tar -czf test-results.tar.gz test-results/
+      - name: Upload Playwright test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-results.tar.gz
+          retention-days: 1
 
   deploy:
     needs: playwright

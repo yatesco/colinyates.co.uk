@@ -58,7 +58,10 @@ run = "sops encrypt -i {{config_root}}/.env.json"
 
 [tasks."playwright:snapshots"]
 description = "Generate Playwright regression snapshots in CI Docker image (Linux)"
-run = "docker run --rm -v $PWD:/workspace -w /workspace mcr.microsoft.com/playwright:v1.58.2-noble bash -c 'npm ci && npm run build && nohup npm run serve ./dist > /dev/null 2>&1 & SERVER_PID=$! && npm run wait-on http://localhost:3000 && npm run test:e2e -- --update-snapshots; kill $SERVER_PID'"
+run = [
+  "npm run add-untested-pages",
+  "docker run --rm -v $PWD:/workspace -w /workspace mcr.microsoft.com/playwright:v1.58.2-noble bash -c 'npm ci && npm run build && nohup npm run serve ./dist > /dev/null 2>&1 & SERVER_PID=$! && npm run wait-on http://localhost:3000 && npm run test:e2e -- --update-snapshots; kill $SERVER_PID'"
+]
 
 [tasks."playwright:test:e2e"]
 description = "Run Playwright tests in Linux Docker for consistent snapshot filenames"

@@ -12,7 +12,8 @@
     "astro": "astro",
     "serve": "serve",
     "wait-on": "wait-on",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "add-untested-pages": "tsx scripts/add-untested-pages.ts"
   },
   "dependencies": {
     "@astrojs/rss": "4.0.15",
@@ -38,6 +39,7 @@
     "@types/sanitize-html": "2.16.0",
     "prettier-plugin-astro": "0.14.1",
     "serve": "^14.2.5",
+    "tsx": "^4.21.0",
     "wait-on": "^9.0.4"
   },
   "engines": {
