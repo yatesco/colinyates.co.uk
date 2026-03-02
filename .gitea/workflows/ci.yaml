@@ -1,7 +1,4 @@
 name: Main CI
-env:
-  NPM_CACHE_KEY: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-  NPM_CACHE_RESTORE_KEYS: ${{ runner.os }}-npm-
 on:
   workflow_dispatch:
   push:
@@ -11,74 +8,36 @@ on:
     branches:
       - "**"
 jobs:
-  build_dist:
+  build_test_deploy:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.58.2-noble@sha256:6446946a1d9fd62d9ae501312a2d76a43ee688542b21622056a372959b65d63d
       options: --user 1001
+    env:
+      SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
     steps:
+      # === BUILD SEGMENT ===
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@v4
       - name: Cache npm
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ env.NPM_CACHE_KEY }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ env.NPM_CACHE_RESTORE_KEYS }}
+            ${{ runner.os }}-npm-
       - name: Install dependencies
         run: npm ci
       - name: Save npm cache
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ env.NPM_CACHE_KEY }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ env.NPM_CACHE_RESTORE_KEYS }}
+            ${{ runner.os }}-npm-
       - name: Build Astro site
         run: npm run build
-      - name: Archive dist
-        run: tar -czf dist.tar.gz dist/
-      - name: Upload dist artifact
-        uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
-        with:
-          name: dist
-          path: dist.tar.gz
-          retention-days: 1
-
-  playwright:
-    needs: build_dist
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble@sha256:6446946a1d9fd62d9ae501312a2d76a43ee688542b21622056a372959b65d63d
-      options: --user 1001
-    steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - name: Cache npm
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ env.NPM_CACHE_KEY }}
-          restore-keys: |
-            ${{ env.NPM_CACHE_RESTORE_KEYS }}
-      - name: Install dependencies
-        run: npm ci
-      - name: Save npm cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ env.NPM_CACHE_KEY }}
-          restore-keys: |
-            ${{ env.NPM_CACHE_RESTORE_KEYS }}
-      - name: Download dist artifact
-        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
-        with:
-          name: dist
-      - name: Extract dist
-        run: tar -xzf dist.tar.gz
-      - name: List dist files
-        run: ls -l ./dist
+      # === TEST SEGMENT ===
       - name: Add untested blog pages
         run: npm run add-untested-pages
       - name: Run Playwright tests
@@ -88,7 +47,7 @@ jobs:
         run: tar -czf playwright-report.tar.gz playwright-report/
       - name: Upload Playwright report
         if: always()
-        uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
+        uses: actions/upload-artifact@v3
         with:
           name: playwright-report
           path: playwright-report.tar.gz
@@ -98,20 +57,12 @@ jobs:
         run: tar -czf test-results.tar.gz test-results/
       - name: Upload Playwright test results
         if: always()
-        uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3
+        uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: test-results.tar.gz
           retention-days: 1
-
-  deploy:
-    needs: playwright
-    runs-on: ubuntu-latest
-    env:
-      SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      # === DEPLOY SEGMENT ===
       - name: Install sops
         run: |
           set -e
@@ -123,14 +74,6 @@ jobs:
         run: |
           set -e
           sops decrypt -i .env.json
-      - name: Download dist artifact
-        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
-        with:
-          name: dist
-      - name: Extract dist
-        run: |
-          set -e
-          tar -xzf dist.tar.gz
       - name: Deploy to Cloudflare
         run: |
           set -e
