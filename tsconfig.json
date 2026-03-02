@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "./tsconfigs/strict.jsonc",
   "include": [
     ".astro/types.d.ts",
     "**/*"
@@ -10,6 +10,11 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "jsx": "react-jsx",
-    "target": "es2022"
+    "target": "es2022",
+    "moduleResolution": "nodenext",
+    "module": "NodeNext",
+    "types": [
+      "@playwright/test"
+    ]
   }
 }

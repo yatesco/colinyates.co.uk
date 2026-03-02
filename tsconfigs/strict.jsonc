@@ -1,0 +1,18 @@
+// This file is a local copy of Astro's strict TypeScript config (astro/tsconfigs/strict.json).
+// It is included here to avoid deployment warnings and the need to install node_modules just for config resolution.
+// See: https://github.com/withastro/astro/blob/main/packages/tsconfigs/strict.json
+{
+    "compilerOptions": {
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    }
+}
