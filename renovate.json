@@ -1,15 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>coliny/renovate-config"{
-      "extends": [
-        "local"
-      ],
-      "description": "Renovate config",
-      "docker": {
-        "fileMatch": [
-          "Dockerfile",
-          "Dockerfile.ci"
-        ]
-      }
-    }
+    "local>coliny/renovate-config"
+  ]
+}
