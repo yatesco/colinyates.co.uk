@@ -89,8 +89,6 @@ jobs:
           sudo chmod +x /usr/local/bin/sops
       - name: Decrypt secrets
         run: sops decrypt -i .env.json
-      - name: Install dependencies
-        run: npm ci
       - name: Download dist artifact
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
         with:
@@ -102,7 +100,7 @@ jobs:
           export CLOUDFLARE_API_TOKEN=$(jq -r '.CLOUDFLARE_API_TOKEN' .env.json)
           export CLOUDFLARE_ACCOUNT_ID=$(jq -r '.CLOUDFLARE_ACCOUNT_ID' .env.json)
           if [ "$GITHUB_REF_NAME" = "main" ]; then
-            npm run prod:deploy
+            npx wrangler deploy --env=production
           else
-            npm run staging:deploy
+            npx wrangler deploy --env=staging
           fi
