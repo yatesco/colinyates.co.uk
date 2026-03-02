@@ -10,77 +10,73 @@ on:
 jobs:
   build_test_deploy:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble@sha256:6446946a1d9fd62d9ae501312a2d76a43ee688542b21622056a372959b65d63d
-      options: --user 1001
     env:
       SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
     steps:
       # === BUILD SEGMENT ===
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Cache npm
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+      - name: Build CI Docker image
+        run: docker build -t ci-image-${{ github.repository }}-${{ github.sha }} -f Dockerfile.ci .
       - name: Install dependencies
-        run: npm ci
-      - name: Save npm cache
-        uses: actions/cache@v4
+        uses: addnab/docker-run-action@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+          image: ci-image-${{ github.repository }}-${{ github.sha }}
+          options: -v ${{ github.workspace }}:/workspace
+          run: |
+            cd /workspace
+            npm ci
       - name: Build Astro site
-        run: npm run build
-      # === TEST SEGMENT ===
-      - name: Add untested blog pages
-        run: npm run add-untested-pages
-      - name: Run Playwright tests
-        run: npm run test:e2e
-      - name: Archive Playwright report
-        if: always()
-        run: tar -czf playwright-report.tar.gz playwright-report/
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ci-image-${{ github.repository }}-${{ github.sha }}
+          options: -v ${{ github.workspace }}:/workspace
+          run: |
+            cd /workspace
+            npm run build
+      - name: Add untested blog pages and run Playwright tests
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ci-image-${{ github.repository }}-${{ github.sha }}
+          options: -v ${{ github.workspace }}:/workspace
+          run: |
+            set -e
+            cd /workspace
+            npm run add-untested-pages
+            npm run test:e2e
+      - name: Decrypt secrets
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ci-image-${{ github.repository }}-${{ github.sha }}
+          options: -v ${{ github.workspace }}:/workspace
+          run: |
+            cd /workspace
+            sops decrypt -i .env.json
+      - name: Deploy to Cloudflare
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ci-image-${{ github.repository }}-${{ github.sha }}
+          options: -v ${{ github.workspace }}:/workspace
+          run: |
+            cd /workspace
+            export CLOUDFLARE_API_TOKEN=$(jq -r '.CLOUDFLARE_API_TOKEN' .env.json)
+            export CLOUDFLARE_ACCOUNT_ID=$(jq -r '.CLOUDFLARE_ACCOUNT_ID' .env.json)
+            if [ "$GITHUB_REF_NAME" = "main" ]; then
+              npx wrangler deploy --env=production
+            else
+              npx wrangler deploy --env=staging
+            fi
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: playwright-report
-          path: playwright-report.tar.gz
+          path: playwright-report/
           retention-days: 1
-      - name: Archive Playwright test results
-        if: always()
-        run: tar -czf test-results.tar.gz test-results/
       - name: Upload Playwright test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: test-results.tar.gz
+          path: test-results/
           retention-days: 1
-      # === DEPLOY SEGMENT ===
-      - name: Install sops
-        run: |
-          set -e
-          SOPS_VERSION="v3.12.1"
-          curl -LO https://github.com/getsops/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux.amd64
-          sudo mv sops-${SOPS_VERSION}.linux.amd64 /usr/local/bin/sops
-          sudo chmod +x /usr/local/bin/sops
-      - name: Decrypt secrets
-        run: |
-          set -e
-          sops decrypt -i .env.json
-      - name: Deploy to Cloudflare
-        run: |
-          set -e
-          export CLOUDFLARE_API_TOKEN=$(jq -r '.CLOUDFLARE_API_TOKEN' .env.json)
-          export CLOUDFLARE_ACCOUNT_ID=$(jq -r '.CLOUDFLARE_ACCOUNT_ID' .env.json)
-          if [ "$GITHUB_REF_NAME" = "main" ]; then
-            npx wrangler deploy --env=production
-          else
-            npx wrangler deploy --env=staging
-          fi
