@@ -13,10 +13,7 @@ BIN_PATH = "{{ config_root }}/node_modules/.bin"
 # for security stuff
 age = "1.2.0"
 sops = "3.12.1"
-# for the project itself
-node = "24.14.0"
-npm = "11.11.0"
-python = "3.14.3"
+# Node and npm versions will be auto-detected from package.json
 
 [tasks]
 [tasks.libs]
@@ -38,7 +35,7 @@ run = "npm run build"
 
 [tasks."prod:launch"]
 description = "Launch production web server"
-run = "cd dist && python -m http.server 8000"
+run = "npx serve ./dist"
 
 [tasks."security:decrypt"]
 description = "Decrypt the files (only for dev!)"
