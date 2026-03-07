@@ -40,7 +40,7 @@
     "@types/node": "25.3.3",
     "@types/sanitize-html": "2.16.0",
     "prettier-plugin-astro": "0.14.1",
-    "serve": "14.2.5",
+    "serve": "14.2.6",
     "tsx": "4.21.0",
     "wait-on": "9.0.4"
   },
