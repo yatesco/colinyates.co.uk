@@ -18,13 +18,13 @@
     "staging:deploy": "wrangler deploy --env=staging"
   },
   "dependencies": {
-    "@astrojs/rss": "4.0.15",
-    "@astrojs/sitemap": "3.7.0",
+    "@astrojs/rss": "4.0.17",
+    "@astrojs/sitemap": "3.7.1",
     "@iconify-json/mdi": "1.2.3",
     "@iconify-json/mingcute": "1.2.7",
     "@tailwindcss/postcss": "4.2.1",
     "@tailwindcss/vite": "4.2.1",
-    "astro": "5.18.0",
+    "astro": "5.18.1",
     "astro-icon": "1.1.5",
     "markdown-it": "14.1.1",
     "node-html-parser": "7.1.0",
