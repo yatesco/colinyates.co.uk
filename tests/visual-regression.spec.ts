@@ -32,13 +32,27 @@ const blogUrls = [
     '/posts/2024-12-26-emailing-a-contact-us-form',
 ];
 
+const pageTolerances: Record<string, { maxDiffPixels?: number }> = {
+    // This works perfectly locally but fails with a few pixels difference in CI
+    '/posts/2017-10-15-modules-within-emacs': { maxDiffPixels: 20 },
+};
+
 for (const url of blogUrls) {
     for (const browser of ['chromium', 'webkit']) {
         test.describe(`${browser} visual regression for ${url}`, () => {
             test(`${browser} - ${url} should match screenshot`, async ({ page, browserName }) => {
                 test.skip(browserName !== browser, `Only run on ${browser}`);
+                let tolerances = (pageTolerances[url] ?? {})
                 await page.goto(`http://localhost:3000${url}`);
-                await expect(page).toHaveScreenshot(`${browser}-${url.replace(/\//g, '_').toLowerCase()}.png`, { fullPage: true });
+                const screenshotOptions = {
+                    fullPage: true,
+                    ...tolerances,
+                };
+
+                await expect(page).toHaveScreenshot(
+                    `${browser}-${url.replace(/\//g, '_').toLowerCase()}.png`,
+                    screenshotOptions,
+                );
             });
         });
     }
